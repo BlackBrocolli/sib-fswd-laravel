@@ -80,7 +80,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        //return view
+        return view('users.show', compact('user'));
     }
 
     /**

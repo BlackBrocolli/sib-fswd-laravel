@@ -39,7 +39,7 @@
                                     <tr>
                                         <td class="text-center">
                                             <img src="{{ asset('storage/' . $user->avatar) }}" class="rounded"
-                                                style="width: 150px">
+                                                style="width: 100px">
                                         </td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>

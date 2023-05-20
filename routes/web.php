@@ -20,5 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::redirect('/', '/users');
+
 // route resource
 Route::resource('/users', UserController::class);
