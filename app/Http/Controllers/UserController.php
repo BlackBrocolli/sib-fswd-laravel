@@ -108,7 +108,7 @@ class UserController extends Controller
     {
         //validate form
         $this->validate($request, [
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'name' => 'required|string|max:100',
             'email' => 'required|email|max:100',
             'phone' => 'required|string|max:15',
@@ -161,6 +161,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        //delete image
+        Storage::delete('public/' . $user->avatar);
+        //delete post
+        $user->delete();
+        //redirect to index
+        return redirect()->route('users.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }
