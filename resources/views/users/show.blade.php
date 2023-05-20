@@ -35,6 +35,16 @@
                                 <td>{{ $user->email }}</td>
                             </tr>
                             <tr>
+                                <td>Password</td>
+                                <td>:</td>
+                                <td>
+                                    <span id="password-display" style="display: none;">{{ $user->password }}</span>
+                                    <input type="password" id="password-input" value="{{ $user->password }}" disabled>
+                                    <button type="button" id="toggle-password-button"
+                                        onclick="togglePasswordVisibility()">Tampilkan</button>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>Role</td>
                                 <td>:</td>
                                 <td>{{ $user->role }}</td>
@@ -59,6 +69,24 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function togglePasswordVisibility() {
+            var passwordDisplay = document.getElementById("password-display");
+            var passwordInput = document.getElementById("password-input");
+            var toggleButton = document.getElementById("toggle-password-button");
+
+            if (passwordDisplay.style.display === "none") {
+                passwordDisplay.style.display = "inline";
+                passwordInput.style.display = "none";
+                toggleButton.textContent = "Sembunyikan";
+            } else {
+                passwordDisplay.style.display = "none";
+                passwordInput.style.display = "inline";
+                toggleButton.textContent = "Tampilkan";
+            }
+        }
+    </script>
+
 </body>
 
 </html>
