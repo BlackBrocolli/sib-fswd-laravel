@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Data User - Arkatama</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-</head>
+@section('title', 'Edit Data User')
 
-<body style="background: lightgray">
+@section('content')
     <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md-12">
@@ -19,8 +11,7 @@
                         <a href="{{ route('users.index') }}" class="text-dark">&#60; kembali</a>
                         <br><br>
                         <h1>Edit User</h1>
-                        <form action="{{ route('users.update', $user->id) }}" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
@@ -30,8 +21,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Name</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                    name="name" value="{{ old('name', $user->name) }}"
-                                    placeholder="Masukkan nama user">
+                                    name="name" value="{{ old('name', $user->name) }}" placeholder="Masukkan nama user">
 
                                 <!-- error message untuk name -->
                                 @error('name')
@@ -43,8 +33,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Email</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" value="{{ old('email', $user->email) }}"
-                                    placeholder="Masukkan email">
+                                    name="email" value="{{ old('email', $user->email) }}" placeholder="Masukkan email">
 
                                 <!-- error message untuk email -->
                                 @error('email')
@@ -130,12 +119,11 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    {{-- <script src="https://cdn.ckeditor.com/4.20.2/basic/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace('content');
-    </script> --}}
+@endsection
+
+@section('js')
+    @parent
+
     <script>
         function togglePasswordVisibility() {
             var passwordInput = document.getElementById("password-input");
@@ -150,7 +138,4 @@
             }
         }
     </script>
-
-</body>
-
-</html>
+@endsection

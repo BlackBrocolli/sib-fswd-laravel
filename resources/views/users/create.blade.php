@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tambah Data User - Arkatama</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-</head>
+@section('title', 'Tambah Data User')
 
-<body style="background: lightgray">
+@section('content')
     <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md-12">
@@ -129,12 +121,12 @@
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    {{-- <script src="https://cdn.ckeditor.com/4.20.2/basic/ckeditor.js"></script> --}}
-    {{-- <script>
-        // CKEDITOR.replace('content');
-    </script> --}}
+
+@endsection
+
+@section('js')
+    @parent
+
     <script>
         function togglePasswordVisibility() {
             var passwordInput = document.getElementById("password-input");
@@ -149,6 +141,4 @@
             }
         }
     </script>
-</body>
-
-</html>
+@endsection
