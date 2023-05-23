@@ -13,12 +13,19 @@
         <link rel="stylesheet" href="{{ asset('vendor/cloudflare/toastr.min.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     @show
+
+    @section('style')
+        <style>
+            body {
+                background: lightgray;
+            }
+        </style>
+    @show
 </head>
 
-<body style="background: lightgray">
+<body>
 
     @yield('content')
-
 
     @section('js')
         {{-- Scripts --}}

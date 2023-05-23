@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-// import UserController
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +15,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::redirect('/', '/users');
+Route::get('/', [HomeController::class, 'index']);
 
 // route resource
 Route::resource('/users', UserController::class);
