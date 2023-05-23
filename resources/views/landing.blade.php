@@ -110,7 +110,7 @@
 
             <div class="carousel-inner" role="listbox">
 
-                <!-- Slide 1 -->
+                <!-- Slides -->
                 @foreach ($sliders as $index => $slider)
                     <div class="carousel-item {{ $index === 0 ? 'active' : '' }}"
                         style="background-image: url(assets-landing/img/slide/{{ $slider->image }});">
@@ -123,34 +123,6 @@
                         </div>
                     </div>
                 @endforeach
-
-
-                {{-- <!-- Slide 2 -->
-                <div class="carousel-item" style="background-image: url(assets-landing/img/slide/slide-2.jpg);">
-                    <div class="carousel-container">
-                        <div class="carousel-content animate__animated animate__fadeInUp">
-                            <h2>Experience the Ultimate Online Shopping Destination</h2>
-                            <p>Explore our extensive collection of premium products across various categories, including
-                                fashion, electronics, home decor, and more. Immerse yourself in a seamless shopping
-                                experience with user-friendly navigation, secure transactions, and prompt delivery.</p>
-                            <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 3 -->
-                <div class="carousel-item" style="background-image: url(assets-landing/img/slide/slide-3.jpg);">
-                    <div class="carousel-container">
-                        <div class="carousel-content animate__animated animate__fadeInUp">
-                            <h2>Unleash Your Style</h2>
-                            <p>Discover the latest trends, timeless classics, and must-have pieces that reflect your unique
-                                style. From stylish apparel to trendy accessories, we curate a diverse collection to cater
-                                to your fashion cravings. Embrace confidence and express yourself through our meticulously
-                                selected fashion offerings.</p>
-                            <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
-                        </div>
-                    </div>
-                </div> --}}
 
             </div>
 
@@ -194,56 +166,58 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="icon-box" data-aos="fade-up">
-                            <div class="icon"><i class="bi bi-briefcase"></i></div>
-                            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-                            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias
-                                excepturi sint occaecati cupiditate non provident</p>
+                            <div class="icon"><i class="bi bi-truck"></i></div>
+                            <h4 class="title"><a href="">Fast Delivery Service</a></h4>
+                            <p class="description">We provide fast delivery service to ensure your items arrive safely and
+                                on time.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                            <div class="icon"><i class="bi bi-card-checklist"></i></div>
-                            <h4 class="title"><a href="">Dolor Sitema</a></h4>
-                            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat tarad limino ata</p>
+                            <div class="icon"><i class="bi bi-credit-card"></i></div>
+                            <h4 class="title"><a href="">Secure Payment Options</a></h4>
+                            <p class="description">We offer secure payment options to ensure the safety of your
+                                transactions.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-                            <div class="icon"><i class="bi bi-bar-chart"></i></div>
-                            <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-                            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur</p>
+                            <div class="icon"><i class="bi bi-headset"></i></div>
+                            <h4 class="title"><a href="">Professional Support</a></h4>
+                            <p class="description">Our team of professionals is available to provide dedicated support and
+                                assist you with any inquiries.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-                            <div class="icon"><i class="bi bi-binoculars"></i></div>
-                            <h4 class="title"><a href="">Magni Dolores</a></h4>
-                            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                officia deserunt mollit anim id est laborum</p>
+                            <div class="icon"><i class="bi bi-tag"></i></div>
+                            <h4 class="title"><a href="">Product Quality Assurance</a></h4>
+                            <p class="description">We ensure the highest quality standards for our products to meet your
+                                satisfaction.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-                            <div class="icon"><i class="bi bi-brightness-high"></i></div>
-                            <h4 class="title"><a href="">Nemo Enim</a></h4>
-                            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                                blanditiis praesentium voluptatum deleniti atque</p>
+                            <div class="icon"><i class="bi bi-arrow-return-left"></i></div>
+                            <h4 class="title"><a href="">Easy Returns</a></h4>
+                            <p class="description">We offer hassle-free returns for any products that do not meet your
+                                expectations.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                            <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-                            <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-                            <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero
-                                tempore, cum soluta nobis est eligendi</p>
+                            <div class="icon"><i class="bi bi-megaphone"></i></div>
+                            <h4 class="title"><a href="">Timely Updates</a></h4>
+                            <p class="description">Stay informed with timely updates regarding new arrivals, promotions,
+                                and special offers.</p>
                         </div>
                     </div>
                 </div>
 
             </div>
         </section><!-- End Services Section -->
+
+
 
         <!-- ======= Portfolio Section ======= -->
         <section id="portfolio" class="portfolio">
@@ -253,16 +227,17 @@
                     <div class="col-lg-12 d-flex justify-content-center">
                         <ul id="portfolio-flters">
                             <li data-filter="*" class="filter-active">All</li>
-                            <li data-filter=".filter-app">App</li>
-                            <li data-filter=".filter-card">Card</li>
-                            <li data-filter=".filter-web">Web</li>
+                            @foreach ($products->unique('category_id') as $product)
+                                <li data-filter=".filter-{{ $product->category_id }}">{{ $product->nama_kategori }}</li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
 
+
                 <div class="row portfolio-container" data-aos="fade-up">
 
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                    {{-- <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                         <img src="assets-landing/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>Serum</h4>
@@ -272,103 +247,23 @@
                             <a href="portfolio-details.html" class="details-link" title="More Details"><i
                                     class="bx bx-link"></i></a>
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <img src="assets-landing/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 3</h4>
-                            <p>Web</p>
-                            <a href="assets-landing/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery"
-                                class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                    class="bx bx-link"></i></a>
+                    @foreach ($products as $product)
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-{{ $product->category_id }}">
+                            <img src="assets-landing/img/portfolio/{{ $product->image }}" class="img-fluid"
+                                alt="">
+                            <div class="portfolio-info">
+                                <h4>{{ $product->nama_produk }}</h4>
+                                <p>Rp{{ $product->price }}</p>
+                                <a href="assets-landing/img/portfolio/{{ $product->image }}"
+                                    data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
+                                    title="{{ $product->name }}"><i class="bx bx-plus"></i></a>
+                                <a href="portfolio-details.html" class="details-link" title="More Details"><i
+                                        class="bx bx-link"></i></a>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <img src="assets-landing/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 2</h4>
-                            <p>App</p>
-                            <a href="assets-landing/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery"
-                                class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                    class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <img src="assets-landing/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 2</h4>
-                            <p>Card</p>
-                            <a href="assets-landing/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery"
-                                class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                    class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <img src="assets-landing/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 2</h4>
-                            <p>Web</p>
-                            <a href="assets-landing/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery"
-                                class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                    class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <img src="assets-landing/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 3</h4>
-                            <p>App</p>
-                            <a href="assets-landing/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery"
-                                class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                    class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <img src="assets-landing/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 1</h4>
-                            <p>Card</p>
-                            <a href="assets-landing/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery"
-                                class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                    class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <img src="assets-landing/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 3</h4>
-                            <p>Card</p>
-                            <a href="assets-landing/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery"
-                                class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                    class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <img src="assets-landing/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 3</h4>
-                            <p>Web</p>
-                            <a href="assets-landing/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery"
-                                class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                    class="bx bx-link"></i></a>
-                        </div>
-                    </div>
+                    @endforeach
 
                 </div>
 
