@@ -44,8 +44,8 @@
         <div class="container d-flex justify-content-center justify-content-md-between">
             <div class="contact-info d-flex align-items-center">
                 <i class="bi bi-envelope d-flex align-items-center"><a
-                        href="mailto:contact@example.com">arkatamastore@gmail.com</a></i>
-                <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+                        href="mailto:contact@example.com">mnovaldayat@gmail.com</a></i>
+                <i class="bi bi-phone d-flex align-items-center ms-4"><span>+62 831 8465 5468</span></i>
             </div>
             <div class="social-links d-none d-md-flex align-items-center">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -111,26 +111,28 @@
             <div class="carousel-inner" role="listbox">
 
                 <!-- Slide 1 -->
-                <div class="carousel-item active" style="background-image: url(assets-landing/img/slide/slide-1.jpg);">
-                    <div class="carousel-container">
-                        <div class="carousel-content animate__animated animate__fadeInUp">
-                            <h2>Welcome to <span>Arkatama Store</span></h2>
-                            <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil
-                                ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse
-                                doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                            <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
+                @foreach ($sliders as $index => $slider)
+                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }}"
+                        style="background-image: url(assets-landing/img/slide/{{ $slider->image }});">
+                        <div class="carousel-container">
+                            <div class="carousel-content animate__animated animate__fadeInUp">
+                                <h2>{{ $slider->title }}</h2>
+                                <p>{{ $slider->description }}</p>
+                                <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
-                <!-- Slide 2 -->
+
+                {{-- <!-- Slide 2 -->
                 <div class="carousel-item" style="background-image: url(assets-landing/img/slide/slide-2.jpg);">
                     <div class="carousel-container">
                         <div class="carousel-content animate__animated animate__fadeInUp">
-                            <h2>Lorem Ipsum Dolor</h2>
-                            <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil
-                                ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse
-                                doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                            <h2>Experience the Ultimate Online Shopping Destination</h2>
+                            <p>Explore our extensive collection of premium products across various categories, including
+                                fashion, electronics, home decor, and more. Immerse yourself in a seamless shopping
+                                experience with user-friendly navigation, secure transactions, and prompt delivery.</p>
                             <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
                         </div>
                     </div>
@@ -140,14 +142,15 @@
                 <div class="carousel-item" style="background-image: url(assets-landing/img/slide/slide-3.jpg);">
                     <div class="carousel-container">
                         <div class="carousel-content animate__animated animate__fadeInUp">
-                            <h2>Sequi ea ut et est quaerat</h2>
-                            <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil
-                                ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse
-                                doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                            <h2>Unleash Your Style</h2>
+                            <p>Discover the latest trends, timeless classics, and must-have pieces that reflect your unique
+                                style. From stylish apparel to trendy accessories, we curate a diverse collection to cater
+                                to your fashion cravings. Embrace confidence and express yourself through our meticulously
+                                selected fashion offerings.</p>
                             <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
 
