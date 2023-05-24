@@ -24,6 +24,9 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        return view('dashboard');
+        $navitem = 'dashboard';
+        $navitemchild = '';
+
+        return view('dashboard', compact('navitem', 'navitemchild'));
     }
 }

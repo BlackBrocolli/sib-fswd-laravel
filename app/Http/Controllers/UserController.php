@@ -17,10 +17,12 @@ class UserController extends Controller
     public function index()
     {
         //get users
-        $users = User::latest()->paginate(5);
+        $users = User::latest()->get();
+        $navitem = 'pengguna';
+        $navitemchild = 'daftar-pengguna';
 
         //render view with posts
-        return view('users.index', compact('users'));
+        return view('users.index', compact('users', 'navitem', 'navitemchild'));
     }
 
     /**

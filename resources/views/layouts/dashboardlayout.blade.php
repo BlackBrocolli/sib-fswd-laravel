@@ -281,14 +281,14 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link" href="/dashboard">
+                <a class="nav-link {{ $navitem != 'dashboard' ? 'collapsed' : '' }}" href="/dashboard">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/slider">
+                <a class="nav-link {{ $navitem != 'slider' ? 'collapsed' : '' }}" href="/slider">
                     <i class="bi bi-card-image"></i>
                     <span>Slider</span>
                 </a>
@@ -296,19 +296,21 @@
             <!-- End Slider Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse"
-                    href="#">
+                <a class="nav-link {{ $navitem != 'produk' ? 'collapsed' : '' }}" data-bs-target="#components-nav"
+                    data-bs-toggle="collapse" href="#">
                     <i class="bi bi-grid-3x3-gap-fill"></i><span>Produk</span><i
                         class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <ul id="components-nav" class="nav-content collapse {{ $navitem == 'produk' ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="components-alerts.html">
+                        <a href="components-alerts.html" class="{{ $navitemchild == 'kategori' ? 'active' : '' }}">
                             <i class="bi bi-tags"></i><span>Kategori</span>
                         </a>
                     </li>
                     <li>
-                        <a href="components-accordion.html">
+                        <a href="components-accordion.html"
+                            class="{{ $navitemchild == 'daftar-produk' ? 'active' : '' }}">
                             <i class="bi bi-list-ul"></i><span>Daftar Produk</span>
                         </a>
                     </li>
@@ -316,17 +318,20 @@
             </li><!-- End Produk Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                <a class="nav-link {{ $navitem != 'pengguna' ? 'collapsed' : '' }}" data-bs-target="#forms-nav"
+                    data-bs-toggle="collapse" href="#">
                     <i class="bi bi-people"></i><span>Pengguna</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <ul id="forms-nav" class="nav-content collapse {{ $navitem == 'pengguna' ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="forms-elements.html">
+                        <a href="forms-elements.html" class="{{ $navitemchild == 'grup-pengguna' ? 'active' : '' }}">
                             <i class="bi bi-person-plus"></i><span>Grup Pengguna</span>
                         </a>
                     </li>
                     <li>
-                        <a href="forms-layouts.html">
+                        <a href="{{ route('users.index') }}"
+                            class="{{ $navitemchild == 'daftar-pengguna' ? 'active' : '' }}">
                             <i class="bi bi-people-fill"></i><span>Daftar Pengguna</span>
                         </a>
                     </li>
