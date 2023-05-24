@@ -20,7 +20,11 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Pengguna</h5>
+                        <div class="d-flex justify-content-between align-items-center my-2">
+                            <h5 class="card-title">Pengguna</h5>
+                            <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm py-2 px-3"><i
+                                    class="bi bi-person-plus-fill"></i> Tambah pengguna</a>
+                        </div>
                         {{-- <p>Add lightweight datatables to your project with using the <a
                                 href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple
                                 DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to

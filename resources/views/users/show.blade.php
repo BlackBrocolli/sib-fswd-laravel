@@ -1,14 +1,31 @@
-@extends('layouts.main')
+@extends('layouts.dashboardlayout')
 
-@section('title', 'Detail Data User')
+@section('title', 'Detail Pengguna')
 
 @section('content')
-    <div class="container mt-5 mb-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card border-0 shadow rounded">
+    <div class="pagetitle">
+        <h1>Detail Pengguna</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                <li class="breadcrumb-item">Pengguna</li>
+                <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Daftar Pengguna</a></li>
+                <li class="breadcrumb-item active">Detail Pengguna</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
                     <div class="card-body">
-                        <a href="{{ route('users.index') }}" class="text-dark">&#60; kembali</a>
+
+                        <br>
+                        <a href="{{ route('users.index') }}" class="btn btn-primary btn-sm"><i class="bi bi-arrow-left"></i>
+                            Kembali</a>
+
                         <br><br>
                         <div class="text-center">
                             <img src="{{ asset('storage/' . $user->avatar) }}" class="rounded" style="width: 200px">
@@ -56,15 +73,10 @@
                         </table>
                     </div>
                 </div>
+
             </div>
         </div>
-    </div>
-
-@endsection
-
-
-@section('js')
-    @parent
+    </section>
 
     <script>
         function togglePasswordVisibility() {

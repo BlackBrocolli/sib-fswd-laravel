@@ -53,12 +53,13 @@
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
 
-        <div class="search-bar">
+        {{-- <div class="search-bar">
             <form class="search-form d-flex align-items-center" method="POST" action="#">
                 <input type="text" name="query" placeholder="Search" title="Enter search keyword">
                 <button type="submit" title="Search"><i class="bi bi-search"></i></button>
             </form>
-        </div><!-- End Search Bar -->
+        </div> --}}
+        <!-- End Search Bar -->
 
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
@@ -298,8 +299,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ $navitem != 'produk' ? 'collapsed' : '' }}" data-bs-target="#components-nav"
                     data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-grid-3x3-gap-fill"></i><span>Produk</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-grid-3x3-gap"></i><span>Produk</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="components-nav" class="nav-content collapse {{ $navitem == 'produk' ? 'show' : '' }}"
                     data-bs-parent="#sidebar-nav">
