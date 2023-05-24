@@ -1,131 +1,160 @@
-@extends('layouts.main')
+@extends('layouts.dashboardlayout')
 
-@section('title', 'Tambah Data User')
+@section('title', 'Tambah Pengguna')
 
 @section('content')
-    <div class="container mt-5 mb-5">
+    <div class="pagetitle">
+        <h1>Tambah Pengguna</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                <li class="breadcrumb-item">Pengguna</li>
+                <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Daftar Pengguna</a></li>
+                <li class="breadcrumb-item active">Tambah Pengguna</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
         <div class="row">
-            <div class="col-md-12">
-                <div class="card border-0 shadow rounded">
+            <div class="col-lg-12">
+
+                <div class="card">
                     <div class="card-body">
-                        <a href="{{ route('users.index') }}" class="text-dark">&#60; kembali</a>
-                        <h1>Buat User Baru</h1>
+
+                        <br>
+                        <a href="{{ route('users.index') }}" class="btn btn-primary btn-sm"><i class="bi bi-arrow-left"></i>
+                            Kembali</a>
+
+                        <br><br>
                         <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
 
                             @csrf
-                            <div class="form-group">
-                                <label class="font-weight-bold">Avatar</label>
-                                <input type="file" class="form-control-file @error('avatar') is-invalid @enderror"
-                                    name="avatar">
-
-                                <!-- error message untuk avatar -->
-                                @error('avatar')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label class="font-weight-bold">Name</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                    name="name" value="{{ old('name') }}" placeholder="Masukkan nama">
-
-                                <!-- error message untuk nama -->
-                                @error('name')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label class="font-weight-bold">Email</label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" value="{{ old('email') }}" placeholder="Masukkan email">
-
-                                <!-- error message untuk email -->
-                                @error('email')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label class="font-weight-bold">Password</label>
-                                <div class="input-group">
-                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                        name="password" value="{{ old('password') }}" placeholder="Masukkan password"
-                                        id="password-input">
-
-                                    <div class="input-group-append">
-                                        <button id="password-visibility-button" type="button" class="btn btn-secondary"
-                                            onclick="togglePasswordVisibility()">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                    </div>
+                            <div class="row mb-3">
+                                <label for="avatar" class="col-sm-2 col-form-label">Avatar</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control @error('avatar') is-invalid @enderror" type="file"
+                                        id="avatar" name="avatar">
+                                    <!-- error message untuk avatar -->
+                                    @error('avatar')
+                                        <div class="alert alert-danger mt-2 small">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
+                            </div>{{-- End Avatar Input --}}
 
-                                <!-- error message untuk password -->
-                                @error('password')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
+                            <div class="row mb-3">
+                                <label for="name" class="col-sm-2 col-form-label">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                        name="name" value="{{ old('name') }}" id="name">
+                                    <!-- error message untuk nama -->
+                                    @error('name')
+                                        <div class="alert alert-danger mt-2 small">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>{{-- End Name Input --}}
+
+                            <div class="row mb-3">
+                                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                        id="email" name="email" value="{{ old('email') }}">
+                                    <!-- error message untuk email -->
+                                    @error('email')
+                                        <div class="alert alert-danger mt-2 small">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div> {{-- End Email Input --}}
+
+                            <div class="row mb-3">
+                                <label for="password-input" class="col-sm-2 col-form-label">Password</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group">
+                                        <input id="password-input" type="password"
+                                            class="form-control @error('password') is-invalid @enderror" name="password"
+                                            value="{{ old('password') }}">
+                                        <div class="input-group-append">
+                                            <button id="password-visibility-button" type="button" class="btn btn-secondary"
+                                                onclick="togglePasswordVisibility()">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                        </div>
                                     </div>
-                                @enderror
+                                    <!-- error message untuk password -->
+                                    @error('password')
+                                        <div class="alert alert-danger mt-2 small">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label class="font-weight-bold">Role</label>
-                                <select class="form-control @error('role') is-invalid @enderror" name="role">
-                                    <option value="">Pilih Role</option>
-                                    <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin
-                                    </option>
-                                    <option value="staff" {{ old('role') == 'staff' ? 'selected' : '' }}>Staff
-                                    </option>
-                                </select>
+                            {{-- End Password Input --}}
 
-                                <!-- error message untuk role -->
-                                @error('role')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Role</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select @error('role') is-invalid @enderror"
+                                        aria-label="Default select example" name="role">
+                                        <option value="">Pilih Role</option>
+                                        <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin
+                                        </option>
+                                        <option value="staff" {{ old('role') == 'staff' ? 'selected' : '' }}>Staff
+                                        </option>
+                                    </select>
+                                    <!-- error message untuk role -->
+                                    @error('role')
+                                        <div class="alert alert-danger mt-2 small">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>{{-- End Role Select --}}
+
+                            <div class="row mb-3">
+                                <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+                                <div class="col-sm-10">
+                                    <input id="phone" type="text"
+                                        class="form-control @error('phone') is-invalid @enderror" name="phone"
+                                        value="{{ old('phone') }}">
+                                    <!-- error message untuk phone -->
+                                    @error('phone')
+                                        <div class="alert alert-danger mt-2 small">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>{{-- End Phone Input --}}
+
+                            <div class="row mb-3">
+                                <label for="address" class="col-sm-2 col-form-label">Address</label>
+                                <div class="col-sm-10">
+                                    <textarea id="address" class="form-control @error('address') is-invalid @enderror" style="height: 100px"
+                                        name="address">{{ old('address') }}</textarea>
+                                    <!-- error message untuk address -->
+                                    @error('address')
+                                        <div class="alert alert-danger mt-2 small">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>{{-- End Address Textarea --}}
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
-
-                            <div class="form-group">
-                                <label class="font-weight-bold">Phone</label>
-                                <input type="text" class="form-control @error('phone') is-invalid @enderror"
-                                    name="phone" value="{{ old('phone') }}" placeholder="Masukkan nomor telepon">
-
-                                <!-- error message untuk phone -->
-                                @error('phone')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label class="font-weight-bold">Address</label>
-                                <textarea class="form-control @error('address') is-invalid @enderror" name="address" rows="5"
-                                    placeholder="Masukkan alamat lengkap">{{ old('address') }}</textarea>
-
-                                <!-- error message untuk address -->
-                                @error('address')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <button type="submit" class="btn btn-md btn-primary">Simpan</button>
-                            <button type="reset" class="btn btn-md btn-secondary">Reset</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-@endsection
-
-@section('js')
-    @parent
+    </section>
 
     <script>
         function togglePasswordVisibility() {
@@ -134,10 +163,10 @@
 
             if (passwordInput.type === "password") {
                 passwordInput.type = "text";
-                passwordVisibilityButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
+                passwordVisibilityButton.innerHTML = '<i class="bi bi-eye-slash"></i>';
             } else {
                 passwordInput.type = "password";
-                passwordVisibilityButton.innerHTML = '<i class="fas fa-eye"></i>';
+                passwordVisibilityButton.innerHTML = '<i class="bi bi-eye"></i>';
             }
         }
     </script>

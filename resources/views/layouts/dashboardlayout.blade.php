@@ -305,13 +305,13 @@
                     data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="components-alerts.html" class="{{ $navitemchild == 'kategori' ? 'active' : '' }}">
-                            <i class="bi bi-tags"></i><span>Kategori</span>
+                            <i class="bi bi-circle"></i><span>Kategori</span>
                         </a>
                     </li>
                     <li>
                         <a href="components-accordion.html"
                             class="{{ $navitemchild == 'daftar-produk' ? 'active' : '' }}">
-                            <i class="bi bi-list-ul"></i><span>Daftar Produk</span>
+                            <i class="bi bi-circle"></i><span>Daftar Produk</span>
                         </a>
                     </li>
                 </ul>
@@ -326,13 +326,13 @@
                     data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="forms-elements.html" class="{{ $navitemchild == 'grup-pengguna' ? 'active' : '' }}">
-                            <i class="bi bi-person-plus"></i><span>Grup Pengguna</span>
+                            <i class="bi bi-circle"></i><span>Grup Pengguna</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('users.index') }}"
                             class="{{ $navitemchild == 'daftar-pengguna' ? 'active' : '' }}">
-                            <i class="bi bi-people-fill"></i><span>Daftar Pengguna</span>
+                            <i class="bi bi-circle"></i><span>Daftar Pengguna</span>
                         </a>
                     </li>
                 </ul>

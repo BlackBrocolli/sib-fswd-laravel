@@ -32,8 +32,11 @@ class UserController extends Controller
      */
     public function create()
     {
+        $navitem = 'pengguna';
+        $navitemchild = 'daftar-pengguna';
+
         // render view
-        return view('users.create');
+        return view('users.create', compact('navitem', 'navitemchild'));
     }
 
     /**
