@@ -19,3 +19,10 @@ Route::get('/', [HomeController::class, 'index']);
 
 // route resource
 Route::resource('/users', UserController::class);
+
+Route::get('/dashboard', [HomeController::class, 'dashboard']);
+
+// ketika route tidak ditemukan
+Route::fallback(function () {
+    return view('pages-error-404');
+});

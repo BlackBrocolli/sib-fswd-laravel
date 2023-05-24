@@ -21,4 +21,9 @@ class HomeController extends Controller
 
         return view('landing', compact('sliders', 'products'));
     }
+
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
 }
