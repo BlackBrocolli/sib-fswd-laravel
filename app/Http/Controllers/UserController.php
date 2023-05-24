@@ -101,8 +101,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $navitem = 'pengguna';
+        $navitemchild = 'daftar-pengguna';
+
         // return view
-        return view('users.edit', compact('user'));
+        return view('users.edit', compact('user', 'navitem', 'navitemchild'));
     }
 
     /**
