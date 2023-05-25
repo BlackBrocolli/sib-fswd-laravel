@@ -22,6 +22,7 @@ class Product extends Model
         'status',
         'image',
         'created_by',
-        'verified_by'
+        'verified_by',
+        'verified_at',
     ];
 }

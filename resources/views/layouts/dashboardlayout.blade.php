@@ -310,7 +310,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="{{ $navitemchild == 'daftar-produk' ? 'active' : '' }}">
+                        <a href="{{ route('products.index') }}"
+                            class="{{ $navitemchild == 'daftar-produk' ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Daftar Produk</span>
                         </a>
                     </li>

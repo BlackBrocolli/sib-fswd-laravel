@@ -1,15 +1,15 @@
 @extends('layouts.dashboardlayout')
 
-@section('title', 'Produk | Kategori')
+@section('title', 'Daftar Produk')
 
 @section('content')
     <div class="pagetitle">
-        <h1>Kategori</h1>
+        <h1>Daftar Produk</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
                 <li class="breadcrumb-item">Produk</li>
-                <li class="breadcrumb-item active">Kategori</li>
+                <li class="breadcrumb-item active">Daftar Produk</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -21,9 +21,9 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center my-2">
-                            <h5 class="card-title">Kategori</h5>
-                            <a href="{{ route('categories.create') }}" class="btn btn-primary btn-sm py-2 px-3"><i
-                                    class="bi bi-person-plus-fill"></i> Tambah kategori</a>
+                            <h5 class="card-title">Produk</h5>
+                            <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm py-2 px-3"><i
+                                    class="bi bi-person-plus-fill"></i> Tambah produk</a>
                         </div>
                         {{-- <p>Add lightweight datatables to your project with using the <a
                                 href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple
@@ -35,19 +35,31 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Nama kategori</th>
+                                    <th scope="col" data-sortable="false">Image</th>
+                                    <th scope="col">Nama Produk</th>
+                                    <th scope="col">Nama Kategori</th>
+                                    <th scope="col">Harga</th>
                                     <th scope="col" data-sortable="false">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($categories as $category)
+                                @forelse ($viewproducts as $product)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td>{{ $category->name }}</td>
+                                        <td class="text-center">
+                                            <img src="assets-landing/img/portfolio/{{ $product->image }}" class="rounded"
+                                                style="width: 80px">
+                                        </td>
+                                        <td>{{ $product->nama_produk }}</td>
+                                        <td>{{ $product->nama_kategori }}</td>
+                                        <td>{{ $product->price }}</td>
                                         <td class="text-center">
                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                                action="{{ route('categories.destroy', $category->id) }}" method="POST">
-                                                <a href="{{ route('categories.edit', $category->id) }}"
+                                                action="{{ route('products.destroy', $product->id) }}" method="POST">
+                                                <a href="{{ route('products.show', $product->id) }}"
+                                                    class="btn btn-sm btn-primary btn-block"><i class="bi bi-eye-fill"></i>
+                                                    Detail</a>
+                                                <a href="{{ route('products.edit', $product->id) }}"
                                                     class="btn btn-sm btn-success btn-block"><i
                                                         class="bi bi-pencil-fill"></i> Edit</a>
 
@@ -60,7 +72,7 @@
                                     </tr>
                                 @empty
                                     <div class="alert alert-danger">
-                                        Data Kategori belum Tersedia.
+                                        Data Produk belum Tersedia.
                                     </div>
                                 @endforelse
 

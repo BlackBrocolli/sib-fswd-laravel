@@ -68,11 +68,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        $navitem = 'produk';
-        $navitemchild = 'kategori';
-
-        //return view
-        return view('categories.show', compact('category', 'navitem', 'navitemchild'));
+        //
     }
 
     /**
