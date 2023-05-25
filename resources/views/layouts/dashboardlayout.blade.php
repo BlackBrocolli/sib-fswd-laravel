@@ -304,13 +304,13 @@
                 <ul id="components-nav" class="nav-content collapse {{ $navitem == 'produk' ? 'show' : '' }}"
                     data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="components-alerts.html" class="{{ $navitemchild == 'kategori' ? 'active' : '' }}">
+                        <a href="{{ route('categories.index') }}"
+                            class="{{ $navitemchild == 'kategori' ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Kategori</span>
                         </a>
                     </li>
                     <li>
-                        <a href="components-accordion.html"
-                            class="{{ $navitemchild == 'daftar-produk' ? 'active' : '' }}">
+                        <a href="#" class="{{ $navitemchild == 'daftar-produk' ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Daftar Produk</span>
                         </a>
                     </li>

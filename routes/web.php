@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -15,14 +16,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// route landing page
 Route::get('/', [HomeController::class, 'index']);
 
-// route resource
+// route resource crud users
 Route::resource('/users', UserController::class);
 
+// route dashboard
 Route::get('/dashboard', [HomeController::class, 'dashboard']);
 
 // ketika route tidak ditemukan
 Route::fallback(function () {
     return view('pages-error-404');
 });
+
+// route resource curd categories
+Route::resource('/categories', CategoryController::class);
