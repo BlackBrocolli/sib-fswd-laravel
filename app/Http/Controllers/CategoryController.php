@@ -68,7 +68,11 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $navitem = 'produk';
+        $navitemchild = 'kategori';
+
+        //return view
+        return view('categories.show', compact('category', 'navitem', 'navitemchild'));
     }
 
     /**
@@ -79,7 +83,11 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $navitem = 'produk';
+        $navitemchild = 'kategori';
+
+        // return view
+        return view('categories.edit', compact('category', 'navitem', 'navitemchild'));
     }
 
     /**
@@ -91,7 +99,18 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        //validate form
+        $this->validate($request, [
+            'name' => 'required|string|max:100',
+        ]);
+
+        //update category
+        $category->update([
+            'name' => $request->name,
+        ]);
+
+        //redirect to index
+        return redirect()->route('categories.index')->with(['success' => 'Data Kategori Berhasil Diubah!']);
     }
 
     /**
@@ -102,6 +121,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        //delete category
+        $category->delete();
+        //redirect to index
+        return redirect()->route('categories.index')->with(['success' => 'Data Kategori Berhasil Dihapus!']);
     }
 }
