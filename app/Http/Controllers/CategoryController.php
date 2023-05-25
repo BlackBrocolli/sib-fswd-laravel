@@ -14,14 +14,15 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        // get categories data
-        $categories = Category::latest()->get();
+        // get categories data and sort by ID
+        $categories = Category::orderBy('id')->get();
         $navitem = 'produk';
         $navitemchild = 'kategori';
 
         // render view with categories data
         return view('categories.index', compact('categories', 'navitem', 'navitemchild'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -30,7 +31,11 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $navitem = 'produk';
+        $navitemchild = 'kategori';
+
+        // render view
+        return view('categories.create', compact('navitem', 'navitemchild'));
     }
 
     /**
@@ -41,7 +46,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate form
+        $this->validate($request, [
+            'name' => 'required|string|max:100',
+        ]);
+
+        //create category
+        Category::create([
+            'name' => $request->name,
+        ]);
+
+        //redirect to index
+        return redirect()->route('categories.index')->with(['success' => 'Data Kategori Berhasil Disimpan!']);
     }
 
     /**
