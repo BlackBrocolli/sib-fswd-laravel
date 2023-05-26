@@ -1,6 +1,6 @@
 @extends('layouts.dashboardlayout')
 
-@section('title', 'Daftar Produk')
+@section('title', 'Produk | Daftar Produk')
 
 @section('content')
     <div class="pagetitle">
@@ -25,6 +25,13 @@
                             <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm py-2 px-3"><i
                                     class="bi bi-person-plus-fill"></i> Tambah produk</a>
                         </div>
+
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
                         {{-- <p>Add lightweight datatables to your project with using the <a
                                 href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple
                                 DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to
@@ -37,7 +44,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col" data-sortable="false">Image</th>
                                     <th scope="col">Nama Produk</th>
-                                    <th scope="col">Nama Kategori</th>
+                                    <th scope="col">Kategori</th>
                                     <th scope="col">Harga</th>
                                     <th scope="col" data-sortable="false">Action</th>
                                 </tr>
@@ -52,7 +59,7 @@
                                         </td>
                                         <td>{{ $product->nama_produk }}</td>
                                         <td>{{ $product->nama_kategori }}</td>
-                                        <td>{{ $product->price }}</td>
+                                        <td>Rp{{ $product->price }}</td>
                                         <td class="text-center">
                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                                 action="{{ route('products.destroy', $product->id) }}" method="POST">

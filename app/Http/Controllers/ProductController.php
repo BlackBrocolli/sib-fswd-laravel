@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\ViewProduct;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
@@ -32,7 +34,12 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::orderBy('name')->get();
+        $navitem = 'produk';
+        $navitemchild = 'daftar-produk';
+
+        // render view
+        return view('products.create', compact('categories', 'navitem', 'navitemchild'));
     }
 
     /**
@@ -43,7 +50,44 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate form
+        $this->validate($request, [
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'name' => 'required|string|max:100',
+            'description' => 'required|string|max:255',
+            'category' => 'required',
+            'price' => 'required|numeric',
+        ]);
+
+
+
+        //upload image
+        $image = $request->file('image');
+        $imageName = $image->hashName();
+        // $image->storeAs('public/assets-landing/img/portfolio', $imageName);
+
+        // resize image agar serasi
+        $imagePath = 'assets-landing/img/portfolio/' . $imageName;
+        Image::make($image)
+            ->resize(800, 600)
+            ->save(public_path($imagePath));
+
+        //create product
+        Product::create([
+            'image' => $imageName,
+            'name' => $request->name,
+            'category_id' => $request->category,
+            'description' => $request->description,
+            'price' => $request->price,
+            // status default waiting
+            'status' => 'waiting',
+            // created_by sementara 1 dulu
+            // karena belum ada user login
+            'created_by' => 1,
+        ]);
+
+        //redirect to index
+        return redirect()->route('products.index')->with(['success' => 'Data Produk Berhasil Disimpan!']);
     }
 
     /**

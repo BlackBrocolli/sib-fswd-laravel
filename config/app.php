@@ -195,6 +195,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // untuk resize image product
+        Intervention\Image\ImageServiceProvider::class,
+
     ],
 
     /*
@@ -208,8 +211,14 @@ return [
     |
     */
 
-    'aliases' => Facade::defaultAliases()->merge([
+    /* 'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-    ])->toArray(),
+        
+    ])->toArray(), */
+    'aliases' => [
+        // ...
+        'Image' => Intervention\Image\Facades\Image::class,
+    ],
+
 
 ];
