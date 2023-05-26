@@ -59,8 +59,6 @@ class ProductController extends Controller
             'price' => 'required|numeric',
         ]);
 
-
-
         //upload image
         $image = $request->file('image');
         $imageName = $image->hashName();
@@ -98,7 +96,14 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $navitem = 'produk';
+        $navitemchild = 'daftar-produk';
+
+        // Mengambil data ViewProduct berdasarkan id $product->id
+        $viewProduct = ViewProduct::find($product->id);
+
+        //return view
+        return view('products.show', compact('viewProduct', 'navitem', 'navitemchild'));
     }
 
     /**

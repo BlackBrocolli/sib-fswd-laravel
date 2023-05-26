@@ -125,4 +125,8 @@
             </div>
         </div>
     </section>
+    <script src="https://cdn.ckeditor.com/4.20.2/basic/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('description');
+    </script>
 @endsection

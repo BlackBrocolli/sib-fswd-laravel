@@ -46,6 +46,7 @@
                                     <th scope="col">Nama Produk</th>
                                     <th scope="col">Kategori</th>
                                     <th scope="col">Harga</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col" data-sortable="false">Action</th>
                                 </tr>
                             </thead>
@@ -59,7 +60,10 @@
                                         </td>
                                         <td>{{ $product->nama_produk }}</td>
                                         <td>{{ $product->nama_kategori }}</td>
-                                        <td>Rp{{ $product->price }}</td>
+                                        <td>Rp{{ number_format($product->price, 2, ',', '.') }}</td>
+                                        <td><span
+                                                class="badge rounded-pill {{ $product->status == 'waiting' ? 'bg-warning text-dark' : ($product->status == 'accepted' ? 'bg-success' : 'bg-danger') }}">{{ $product->status }}</span>
+                                        </td>
                                         <td class="text-center">
                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                                 action="{{ route('products.destroy', $product->id) }}" method="POST">
