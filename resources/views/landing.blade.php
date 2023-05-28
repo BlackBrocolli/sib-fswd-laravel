@@ -114,13 +114,15 @@
                 @foreach ($sliders as $index => $slider)
                     <div class="carousel-item {{ $index === 0 ? 'active' : '' }}"
                         style="background-image: url(assets-landing/img/slide/{{ $slider->image }});">
-                        <div class="carousel-container">
-                            <div class="carousel-content animate__animated animate__fadeInUp">
-                                <h2>{{ $slider->title }}</h2>
-                                <p>{{ $slider->description }}</p>
-                                <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
+                        @isset($slider->title)
+                            <div class="carousel-container">
+                                <div class="carousel-content animate__animated animate__fadeInUp">
+                                    <h2>{{ $slider->title }}</h2>
+                                    <p>{{ $slider->description }}</p>
+                                    <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
+                                </div>
                             </div>
-                        </div>
+                        @endisset
                     </div>
                 @endforeach
 

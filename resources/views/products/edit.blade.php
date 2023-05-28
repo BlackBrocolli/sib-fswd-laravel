@@ -83,8 +83,6 @@
                                 </div>
                             </div>{{-- End Category Select --}}
 
-                            {{ number_format($product->price, 2, ',', '.') }}
-
                             <div class="row mb-3">
                                 <label for="price" class="col-sm-2 col-form-label">Price</label>
                                 <div class="col-sm-10">
