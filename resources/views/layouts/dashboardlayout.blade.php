@@ -289,7 +289,7 @@
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <a class="nav-link {{ $navitem != 'slider' ? 'collapsed' : '' }}" href="/slider">
+                <a class="nav-link {{ $navitem != 'slider' ? 'collapsed' : '' }}" href="{{ route('sliders.index') }}">
                     <i class="bi bi-card-image"></i>
                     <span>Slider</span>
                 </a>
