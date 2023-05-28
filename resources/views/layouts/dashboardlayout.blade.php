@@ -326,7 +326,8 @@
                 <ul id="forms-nav" class="nav-content collapse {{ $navitem == 'pengguna' ? 'show' : '' }}"
                     data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="#" class="{{ $navitemchild == 'grup-pengguna' ? 'active' : '' }}">
+                        <a href="{{ route('usergroups.index') }}"
+                            class="{{ $navitemchild == 'grup-pengguna' ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Grup Pengguna</span>
                         </a>
                     </li>
