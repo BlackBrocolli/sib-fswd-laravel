@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class SliderController extends Controller
 {
@@ -30,7 +31,11 @@ class SliderController extends Controller
      */
     public function create()
     {
-        //
+        $navitem = 'slider';
+        $navitemchild = '';
+
+        // render view
+        return view('sliders.create', compact('navitem', 'navitemchild'));
     }
 
     /**
@@ -41,7 +46,32 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate form
+        $this->validate($request, [
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'title' => 'max:100',
+            'description' => '',
+        ]);
+
+        //upload image
+        $image = $request->file('image');
+        $imageName = $image->hashName();
+
+        // resize image agar serasi
+        $imagePath = 'assets-landing/img/slide/' . $imageName;
+        Image::make($image)
+            ->resize(1920, 1088)
+            ->save(public_path($imagePath));
+
+        //create slider
+        Slider::create([
+            'image' => $imageName,
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+
+        //redirect to index
+        return redirect()->route('sliders.index')->with(['success' => 'Data Slider Berhasil Disimpan!']);
     }
 
     /**
