@@ -57,7 +57,12 @@
                             <tr>
                                 <td>Role</td>
                                 <td>:</td>
-                                <td>{{ $user->role }}</td>
+                                @foreach ($usergroups as $usergroup)
+                                    {{-- {{ $usergroup->id == $user->role ? <td>{{$usergroup->nama_grup}}</td> : '' }} --}}
+                                    @if ($usergroup->id == $user->role)
+                                        <td>{{ $usergroup->nama_grup }}</td>
+                                    @endif
+                                @endforeach
                             </tr>
                             <tr>
                                 <td>Phone</td>

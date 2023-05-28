@@ -103,12 +103,12 @@
                                     <select class="form-select @error('role') is-invalid @enderror"
                                         aria-label="Default select example" name="role">
                                         <option value="">Pilih Role</option>
-                                        <option value="admin"
-                                            {{ old('role', $user->role) === 'admin' ? 'selected' : '' }}>Admin
-                                        </option>
-                                        <option value="staff"
-                                            {{ old('role', $user->role) === 'staff' ? 'selected' : '' }}>Staff
-                                        </option>
+                                        @foreach ($usergroups as $usergroup)
+                                            <option value="{{ $usergroup->id }}"
+                                                {{ old('role', $user->role) == $usergroup->id ? 'selected' : '' }}>
+                                                {{ $usergroup->nama_grup }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                     <!-- error message untuk role -->
                                     @error('role')

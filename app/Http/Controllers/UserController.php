@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\User_group;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -18,11 +18,12 @@ class UserController extends Controller
     {
         //get users
         $users = User::latest()->get();
+        $usergroups = User_group::orderBy('id')->get();
         $navitem = 'pengguna';
         $navitemchild = 'daftar-pengguna';
 
         //render view with posts
-        return view('users.index', compact('users', 'navitem', 'navitemchild'));
+        return view('users.index', compact('users', 'navitem', 'navitemchild', 'usergroups'));
     }
 
     /**
@@ -32,11 +33,12 @@ class UserController extends Controller
      */
     public function create()
     {
+        $usergroups = User_group::orderBy('id')->get();
         $navitem = 'pengguna';
         $navitemchild = 'daftar-pengguna';
 
         // render view
-        return view('users.create', compact('navitem', 'navitemchild'));
+        return view('users.create', compact('navitem', 'navitemchild', 'usergroups'));
     }
 
     /**
@@ -55,7 +57,7 @@ class UserController extends Controller
             'phone' => 'required|string|max:15',
             'address' => 'required|string|max:255',
             'password' => 'required|string|max:100',
-            'role' => ['required', Rule::in(['admin', 'staff'])],
+            'role' => 'required',
         ]);
 
         //upload avatar
@@ -86,11 +88,12 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $usergroups = User_group::orderBy('id')->get();
         $navitem = 'pengguna';
         $navitemchild = 'daftar-pengguna';
 
         //return view
-        return view('users.show', compact('user', 'navitem', 'navitemchild'));
+        return view('users.show', compact('user', 'navitem', 'navitemchild', 'usergroups'));
     }
 
     /**
@@ -101,11 +104,12 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $usergroups = User_group::orderBy('id')->get();
         $navitem = 'pengguna';
         $navitemchild = 'daftar-pengguna';
 
         // return view
-        return view('users.edit', compact('user', 'navitem', 'navitemchild'));
+        return view('users.edit', compact('user', 'navitem', 'navitemchild', 'usergroups'));
     }
 
     /**
@@ -125,7 +129,7 @@ class UserController extends Controller
             'phone' => 'required|string|max:15',
             'address' => 'required|string|max:255',
             'password' => 'required|string|max:100',
-            'role' => ['required', Rule::in(['admin', 'staff'])],
+            'role' => 'required',
         ]);
 
         //check if avatar is uploaded

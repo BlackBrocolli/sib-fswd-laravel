@@ -52,7 +52,11 @@
                                         </td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td>{{ $user->role }}</td>
+                                        @foreach ($usergroups as $usergroup)
+                                            @if ($usergroup->id == $user->role)
+                                                <td>{{ $usergroup->nama_grup }}</td>
+                                            @endif
+                                        @endforeach
                                         <td class="text-center">
                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                                 action="{{ route('users.destroy', $user->id) }}" method="POST">
