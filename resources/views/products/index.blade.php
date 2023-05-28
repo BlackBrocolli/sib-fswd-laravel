@@ -51,15 +51,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($viewproducts as $product)
+                                @forelse ($products as $product)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td class="text-center">
                                             <img src="assets-landing/img/portfolio/{{ $product->image }}" class="rounded"
                                                 style="width: 80px">
                                         </td>
-                                        <td>{{ $product->nama_produk }}</td>
-                                        <td>{{ $product->nama_kategori }}</td>
+                                        <td>{{ $product->name }}</td>
+                                        @foreach ($categories as $category)
+                                            @if ($category->id == $product->category_id)
+                                                <td>{{ $category->name }}</td>
+                                            @endif
+                                        @endforeach
+
                                         <td>Rp{{ number_format($product->price, 2, ',', '.') }}</td>
                                         <td><span
                                                 class="badge rounded-pill {{ $product->status == 'waiting' ? 'bg-warning text-dark' : ($product->status == 'accepted' ? 'bg-success' : 'bg-danger') }}">{{ $product->status }}</span>

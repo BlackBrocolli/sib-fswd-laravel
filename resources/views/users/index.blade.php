@@ -76,7 +76,7 @@
                                     </tr>
                                 @empty
                                     <div class="alert alert-danger">
-                                        Data Post belum Tersedia.
+                                        Data User belum Tersedia.
                                     </div>
                                 @endforelse
 

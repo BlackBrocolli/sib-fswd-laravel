@@ -20,12 +20,13 @@ class ProductController extends Controller
     {
         // get product data
         $products = Product::latest()->get();
-        $viewproducts = ViewProduct::latest()->get();
+        $categories = Category::orderBy('name')->get();
+        // $viewproducts = ViewProduct::latest()->get();
         $navitem = 'produk';
         $navitemchild = 'daftar-produk';
 
         // render view with product data
-        return view('products.index', compact('products',  'navitem', 'navitemchild', 'viewproducts'));
+        return view('products.index', compact('products',  'navitem', 'navitemchild', 'categories'));
     }
 
     /**
@@ -80,9 +81,9 @@ class ProductController extends Controller
             'price' => $request->price,
             // status default waiting
             'status' => 'waiting',
-            // created_by sementara 1 dulu
+            // created_by kosong dulu
             // karena belum ada user login
-            'created_by' => 1,
+            // 'created_by' => 1,
         ]);
 
         //redirect to index
@@ -99,12 +100,10 @@ class ProductController extends Controller
     {
         $navitem = 'produk';
         $navitemchild = 'daftar-produk';
-
-        // Mengambil data ViewProduct berdasarkan id $product->id
-        $viewProduct = ViewProduct::find($product->id);
+        $categories = Category::orderBy('name')->get();
 
         //return view
-        return view('products.show', compact('viewProduct', 'navitem', 'navitemchild'));
+        return view('products.show', compact('categories', 'navitem', 'navitemchild', 'product'));
     }
 
     /**
@@ -166,9 +165,9 @@ class ProductController extends Controller
                 'price' => $request->price,
                 // status default waiting
                 'status' => 'waiting',
-                // created_by sementara 1 dulu
+                // created_by kosong dulu
                 // karena belum ada user login
-                'created_by' => 1,
+                // 'created_by' => 1,
             ]);
         } else {
             //update user without avatar

@@ -29,8 +29,8 @@
 
                         <br><br>
                         <div class="text-center">
-                            <img src="../../assets-landing/img/portfolio/{{ $viewProduct->image }}"
-                                class="rounded shadow-sm" style="width: 320px">
+                            <img src="../../assets-landing/img/portfolio/{{ $product->image }}" class="rounded shadow-sm"
+                                style="width: 320px">
                         </div>
                         <hr>
 
@@ -38,30 +38,34 @@
                             <tr class="font-weight-bold">
                                 <td style="width: 120px">Name</td>
                                 <td style="width: 24px">:</td>
-                                <td>{{ $viewProduct->nama_produk }}</td>
+                                <td>{{ $product->name }}</td>
 
                             </tr>
                             <tr>
                                 <td>Kategori</td>
                                 <td>:</td>
-                                <td>{{ $viewProduct->nama_kategori }}</td>
+                                @foreach ($categories as $category)
+                                    @if ($category->id == $product->category_id)
+                                        <td>{{ $category->name }}</td>
+                                    @endif
+                                @endforeach
                             </tr>
                             <tr>
                                 <td>Price</td>
                                 <td>:</td>
-                                <td>Rp{{ number_format($viewProduct->price, 2, ',', '.') }}</td>
+                                <td>Rp{{ number_format($product->price, 2, ',', '.') }}</td>
                             </tr>
 
                             <tr>
                                 <td style="vertical-align: top;">Description</td>
                                 <td style="vertical-align: top;">:</td>
-                                <td style="vertical-align: top;">{!! $viewProduct->description !!}</td>
+                                <td style="vertical-align: top;">{!! $product->description !!}</td>
                             </tr>
                             <tr>
                                 <td>Status</td>
                                 <td>:</td>
                                 <td><span
-                                        class="badge rounded-pill {{ $viewProduct->status == 'waiting' ? 'bg-warning text-dark' : ($viewProduct->status == 'accepted' ? 'bg-success' : 'bg-danger') }}">{{ $viewProduct->status }}</span>
+                                        class="badge rounded-pill {{ $product->status == 'waiting' ? 'bg-warning text-dark' : ($product->status == 'accepted' ? 'bg-success' : 'bg-danger') }}">{{ $product->status }}</span>
                                 </td>
                             </tr>
                         </table>
