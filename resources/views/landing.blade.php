@@ -230,7 +230,13 @@
                         <ul id="portfolio-flters">
                             <li data-filter="*" class="filter-active">All</li>
                             @foreach ($products->unique('category_id') as $product)
-                                <li data-filter=".filter-{{ $product->category_id }}">{{ $product->nama_kategori }}</li>
+                                <li data-filter=".filter-{{ $product->category_id }}">
+                                    @foreach ($categories as $category)
+                                        @if ($category->id == $product->category_id)
+                                            {{ $category->name }}
+                                        @endif
+                                    @endforeach
+                                </li>
                             @endforeach
                         </ul>
                     </div>
@@ -256,8 +262,8 @@
                             <img src="assets-landing/img/portfolio/{{ $product->image }}" class="img-fluid"
                                 alt="">
                             <div class="portfolio-info">
-                                <h4>{{ $product->nama_produk }}</h4>
-                                <p>Rp{{ $product->price }}</p>
+                                <h4>{{ $product->name }}</h4>
+                                <p>Rp{{ number_format($product->price, 2, ',', '.') }}</p>
                                 <a href="assets-landing/img/portfolio/{{ $product->image }}"
                                     data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
                                     title="{{ $product->name }}"><i class="bx bx-plus"></i></a>
