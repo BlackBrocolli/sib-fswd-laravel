@@ -53,7 +53,7 @@ class UserController extends Controller
         $this->validate($request, [
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'name' => 'required|string|max:100',
-            'email' => 'required|email|max:100',
+            'email' => 'required|email|max:100|unique:users,email',
             'phone' => 'required|string|max:15',
             'address' => 'required|string|max:255',
             'password' => 'required|string|max:100',
@@ -121,7 +121,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //validate form
+        // Validate form
         $this->validate($request, [
             'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'name' => 'required|string|max:100',
@@ -131,6 +131,14 @@ class UserController extends Controller
             'password' => 'required|string|max:100',
             'role' => 'required',
         ]);
+
+        // Check if email has changed
+        if ($request->email !== $user->email) {
+            // Validate email uniqueness
+            $this->validate($request, [
+                'email' => 'unique:users,email',
+            ]);
+        }
 
         //check if avatar is uploaded
         if ($request->hasFile('avatar')) {

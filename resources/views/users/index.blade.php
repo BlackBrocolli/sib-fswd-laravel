@@ -25,6 +25,12 @@
                             <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm py-2 px-3"><i
                                     class="bi bi-person-plus-fill"></i> Tambah pengguna</a>
                         </div>
+
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                         {{-- <p>Add lightweight datatables to your project with using the <a
                                 href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple
                                 DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to
