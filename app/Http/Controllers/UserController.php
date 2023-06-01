@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\User_group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -51,7 +52,7 @@ class UserController extends Controller
     {
         //validate form
         $this->validate($request, [
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'name' => 'required|string|max:100',
             'email' => 'required|email|max:100|unique:users,email',
             'phone' => 'required|string|max:15',
@@ -60,21 +61,33 @@ class UserController extends Controller
             'role' => 'required',
         ]);
 
-        //upload avatar
-        $image = $request->file('avatar');
-        $avatarName = $image->hashName();
-        $image->storeAs('public/images', $avatarName);
+        if ($request->hasFile('avatar')) {
+            //upload avatar
+            $image = $request->file('avatar');
+            $avatarName = $image->hashName();
+            $image->storeAs('public/images', $avatarName);
 
-        //create post
-        User::create([
-            'avatar' => "images/$avatarName",
-            'name' => $request->name,
-            'role' => $request->role,
-            'password' => $request->password,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-        ]);
+            //create user with avatar
+            User::create([
+                'avatar' => "images/$avatarName",
+                'name' => $request->name,
+                'role' => $request->role,
+                'password' => Hash::make($request->password),
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'address' => $request->address,
+            ]);
+        } else {
+            // create user without avatar
+            User::create([
+                'name' => $request->name,
+                'role' => $request->role,
+                'password' => Hash::make($request->password),
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'address' => $request->address,
+            ]);
+        }
 
         //redirect to index
         return redirect()->route('users.index')->with(['success' => 'Data Berhasil Disimpan!']);
@@ -155,7 +168,7 @@ class UserController extends Controller
                 'avatar' => "images/$avatarName",
                 'name' => $request->name,
                 'role' => $request->role,
-                'password' => $request->password,
+                'password' => Hash::make($request->password),
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'address' => $request->address,
@@ -165,7 +178,7 @@ class UserController extends Controller
             $user->update([
                 'name' => $request->name,
                 'role' => $request->role,
-                'password' => $request->password,
+                'password' => Hash::make($request->password),
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'address' => $request->address,

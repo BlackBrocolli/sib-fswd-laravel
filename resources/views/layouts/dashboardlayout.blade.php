@@ -213,15 +213,20 @@
                 </li> --}}
                 <!-- End Messages Nav -->
 
+                @php
+                    use Illuminate\Support\Facades\Auth;
+                @endphp
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                         data-bs-toggle="dropdown">
-                        <img src="{{ asset('assets-dashboard/img/profile-img.jpg') }}" alt="Profile"
-                            class="rounded-circle">
-                        @php
-                            use Illuminate\Support\Facades\Auth;
-                        @endphp
+                        @if (!Auth::user()->avatar)
+                            <img src="{{ asset('assets-dashboard/img/default-avatar3.jpg') }}" alt="Profile"
+                                class="rounded-circle">
+                        @else
+                            <img src="{{ asset('storage/' . Auth::user()->avatar) }}" class="rounded-circle"
+                                alt="Profile">
+                        @endif
                         <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
                     </a><!-- End Profile Iamge Icon -->
 

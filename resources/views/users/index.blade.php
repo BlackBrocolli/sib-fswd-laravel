@@ -53,8 +53,13 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td class="text-center">
-                                            <img src="{{ asset('storage/' . $user->avatar) }}" class="rounded"
-                                                style="width: 80px">
+                                            @if (!$user->avatar)
+                                                <img src="{{ asset('assets-dashboard/img/default-avatar3.jpg') }}"
+                                                    alt="Profile" class="rounded" style="width: 80px">
+                                            @else
+                                                <img src="{{ asset('storage/' . $user->avatar) }}" class="rounded"
+                                                    style="width: 80px">
+                                            @endif
                                         </td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>

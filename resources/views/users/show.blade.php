@@ -28,7 +28,13 @@
 
                         <br><br>
                         <div class="text-center">
-                            <img src="{{ asset('storage/' . $user->avatar) }}" class="rounded" style="width: 200px">
+                            @if (!$user->avatar)
+                                <img src="{{ asset('assets-dashboard/img/default-avatar3.jpg') }}" alt="Profile"
+                                    class="rounded" style="width: 200px">
+                            @else
+                                <img src="{{ asset('storage/' . $user->avatar) }}" class="rounded" style="width: 200px">
+                            @endif
+
                         </div>
                         <hr>
 
