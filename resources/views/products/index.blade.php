@@ -3,6 +3,11 @@
 @section('title', 'Produk | Daftar Produk')
 
 @section('content')
+
+    @php
+        use Illuminate\Support\Facades\Auth;
+    @endphp
+
     <div class="pagetitle">
         <h1>Daftar Produk</h1>
         <nav>
@@ -20,11 +25,14 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center my-2">
-                            <h5 class="card-title">Produk</h5>
-                            <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm py-2 px-3"><i
-                                    class="bi bi-person-plus-fill"></i> Tambah produk</a>
-                        </div>
+                        <h5 class="card-title">Produk</h5>
+                        @if (Auth::user()->role == 1)
+                            <div class="d-flex justify-content-between align-items-center my-2">
+                                <h5 class="card-title">Produk</h5>
+                                <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm py-2 px-3"><i
+                                        class="bi bi-person-plus-fill"></i> Tambah produk</a>
+                            </div>
+                        @endif
 
                         @if (session('success'))
                             <div class="alert alert-success">
@@ -46,7 +54,9 @@
                                     <th scope="col">Nama Produk</th>
                                     <th scope="col">Kategori</th>
                                     <th scope="col">Harga</th>
-                                    <th scope="col">Status</th>
+                                    @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+                                        <th scope="col">Status</th>
+                                    @endif
                                     <th scope="col" data-sortable="false">Action</th>
                                 </tr>
                             </thead>
@@ -66,23 +76,29 @@
                                         @endforeach
 
                                         <td>Rp{{ number_format($product->price, 2, ',', '.') }}</td>
-                                        <td><span
-                                                class="badge rounded-pill {{ $product->status == 'waiting' ? 'bg-warning text-dark' : ($product->status == 'accepted' ? 'bg-success' : 'bg-danger') }}">{{ $product->status }}</span>
-                                        </td>
+
+                                        @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+                                            <td><span
+                                                    class="badge rounded-pill {{ $product->status == 'waiting' ? 'bg-warning text-dark' : ($product->status == 'accepted' ? 'bg-success' : 'bg-danger') }}">{{ $product->status }}</span>
+                                            </td>
+                                        @endif
                                         <td class="text-center">
                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                                 action="{{ route('products.destroy', $product->id) }}" method="POST">
                                                 <a href="{{ route('products.show', $product->id) }}"
                                                     class="btn btn-sm btn-primary btn-block"><i class="bi bi-eye-fill"></i>
                                                     Detail</a>
-                                                <a href="{{ route('products.edit', $product->id) }}"
-                                                    class="btn btn-sm btn-success btn-block"><i
-                                                        class="bi bi-pencil-fill"></i> Edit</a>
 
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger btn-block"><i
-                                                        class="bi bi-trash-fill"></i> Hapus</button>
+                                                @if (Auth::user()->role == 1)
+                                                    <a href="{{ route('products.edit', $product->id) }}"
+                                                        class="btn btn-sm btn-success btn-block"><i
+                                                            class="bi bi-pencil-fill"></i> Edit</a>
+
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger btn-block"><i
+                                                            class="bi bi-trash-fill"></i> Hapus</button>
+                                                @endif
                                             </form>
                                         </td>
                                     </tr>

@@ -180,7 +180,7 @@ class ProductController extends Controller
                 'status' => 'waiting',
                 // created_by sementara 1 dulu
                 // karena belum ada user login
-                'created_by' => 1,
+                // 'created_by' => 1,
             ]);
         }
 

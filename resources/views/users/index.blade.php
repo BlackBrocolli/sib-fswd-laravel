@@ -3,6 +3,11 @@
 @section('title', 'Pengguna | Daftar Pengguna')
 
 @section('content')
+
+    @php
+        use Illuminate\Support\Facades\Auth;
+    @endphp
+
     <div class="pagetitle">
         <h1>Daftar Pengguna</h1>
         <nav>
@@ -20,11 +25,14 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center my-2">
-                            <h5 class="card-title">Pengguna</h5>
-                            <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm py-2 px-3"><i
-                                    class="bi bi-person-plus-fill"></i> Tambah pengguna</a>
-                        </div>
+                        <h5 class="card-title">Pengguna</h5>
+                        @if (Auth::user()->role == 1)
+                            <div class="d-flex justify-content-between align-items-center my-2">
+                                <h5 class="card-title">Pengguna</h5>
+                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm py-2 px-3"><i
+                                        class="bi bi-person-plus-fill"></i> Tambah pengguna</a>
+                            </div>
+                        @endif
 
                         @if (session('success'))
                             <div class="alert alert-success">
@@ -74,14 +82,17 @@
                                                 <a href="{{ route('users.show', $user->id) }}"
                                                     class="btn btn-sm btn-primary btn-block"><i class="bi bi-eye-fill"></i>
                                                     Detail</a>
-                                                <a href="{{ route('users.edit', $user->id) }}"
-                                                    class="btn btn-sm btn-success btn-block"><i
-                                                        class="bi bi-pencil-fill"></i> Edit</a>
 
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger btn-block"><i
-                                                        class="bi bi-trash-fill"></i> Hapus</button>
+                                                @if (Auth::user()->role == 1)
+                                                    <a href="{{ route('users.edit', $user->id) }}"
+                                                        class="btn btn-sm btn-success btn-block"><i
+                                                            class="bi bi-pencil-fill"></i> Edit</a>
+
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger btn-block"><i
+                                                            class="bi bi-trash-fill"></i> Hapus</button>
+                                                @endif
                                             </form>
                                         </td>
                                     </tr>

@@ -3,6 +3,11 @@
 @section('title', 'Detail Produk')
 
 @section('content')
+
+    @php
+        use Illuminate\Support\Facades\Auth;
+    @endphp
+
     <div class="pagetitle">
         <h1>Detail Produk</h1>
         <nav>
@@ -61,13 +66,15 @@
                                 <td style="vertical-align: top;">:</td>
                                 <td style="vertical-align: top;">{!! $product->description !!}</td>
                             </tr>
-                            <tr>
-                                <td>Status</td>
-                                <td>:</td>
-                                <td><span
-                                        class="badge rounded-pill {{ $product->status == 'waiting' ? 'bg-warning text-dark' : ($product->status == 'accepted' ? 'bg-success' : 'bg-danger') }}">{{ $product->status }}</span>
-                                </td>
-                            </tr>
+                            @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+                                <tr>
+                                    <td>Status</td>
+                                    <td>:</td>
+                                    <td><span
+                                            class="badge rounded-pill {{ $product->status == 'waiting' ? 'bg-warning text-dark' : ($product->status == 'accepted' ? 'bg-success' : 'bg-danger') }}">{{ $product->status }}</span>
+                                    </td>
+                                </tr>
+                            @endif
                         </table>
                     </div>
                 </div>

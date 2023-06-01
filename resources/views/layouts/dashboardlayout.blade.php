@@ -289,20 +289,23 @@
 
         <ul class="sidebar-nav" id="sidebar-nav">
 
-            <li class="nav-item">
-                <a class="nav-link {{ $navitem != 'dashboard' ? 'collapsed' : '' }}" href="/dashboard">
-                    <i class="bi bi-grid"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li><!-- End Dashboard Nav -->
+            @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+                <li class="nav-item">
+                    <a class="nav-link {{ $navitem != 'dashboard' ? 'collapsed' : '' }}" href="/dashboard">
+                        <i class="bi bi-grid"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li><!-- End Dashboard Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link {{ $navitem != 'slider' ? 'collapsed' : '' }}" href="{{ route('sliders.index') }}">
-                    <i class="bi bi-card-image"></i>
-                    <span>Slider</span>
-                </a>
-            </li>
-            <!-- End Slider Nav -->
+                <li class="nav-item">
+                    <a class="nav-link {{ $navitem != 'slider' ? 'collapsed' : '' }}"
+                        href="{{ route('sliders.index') }}">
+                        <i class="bi bi-card-image"></i>
+                        <span>Slider</span>
+                    </a>
+                </li>
+                <!-- End Slider Nav -->
+            @endif
 
             <li class="nav-item">
                 <a class="nav-link {{ $navitem != 'produk' ? 'collapsed' : '' }}" data-bs-target="#components-nav"
@@ -311,12 +314,15 @@
                 </a>
                 <ul id="components-nav" class="nav-content collapse {{ $navitem == 'produk' ? 'show' : '' }}"
                     data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="{{ route('categories.index') }}"
-                            class="{{ $navitemchild == 'kategori' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Kategori</span>
-                        </a>
-                    </li>
+
+                    @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+                        <li>
+                            <a href="{{ route('categories.index') }}"
+                                class="{{ $navitemchild == 'kategori' ? 'active' : '' }}">
+                                <i class="bi bi-circle"></i><span>Kategori</span>
+                            </a>
+                        </li>
+                    @endif
                     <li>
                         <a href="{{ route('products.index') }}"
                             class="{{ $navitemchild == 'daftar-produk' ? 'active' : '' }}">
@@ -326,27 +332,29 @@
                 </ul>
             </li><!-- End Produk Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link {{ $navitem != 'pengguna' ? 'collapsed' : '' }}" data-bs-target="#forms-nav"
-                    data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-people"></i><span>Pengguna</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="forms-nav" class="nav-content collapse {{ $navitem == 'pengguna' ? 'show' : '' }}"
-                    data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="{{ route('usergroups.index') }}"
-                            class="{{ $navitemchild == 'grup-pengguna' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Grup Pengguna</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('users.index') }}"
-                            class="{{ $navitemchild == 'daftar-pengguna' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Daftar Pengguna</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End Pengguna Nav -->
+            @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+                <li class="nav-item">
+                    <a class="nav-link {{ $navitem != 'pengguna' ? 'collapsed' : '' }}" data-bs-target="#forms-nav"
+                        data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-people"></i><span>Pengguna</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="forms-nav" class="nav-content collapse {{ $navitem == 'pengguna' ? 'show' : '' }}"
+                        data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a href="{{ route('usergroups.index') }}"
+                                class="{{ $navitemchild == 'grup-pengguna' ? 'active' : '' }}">
+                                <i class="bi bi-circle"></i><span>Grup Pengguna</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('users.index') }}"
+                                class="{{ $navitemchild == 'daftar-pengguna' ? 'active' : '' }}">
+                                <i class="bi bi-circle"></i><span>Daftar Pengguna</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li><!-- End Pengguna Nav -->
+            @endif
 
             {{-- <li class="nav-heading">Pages</li>
 

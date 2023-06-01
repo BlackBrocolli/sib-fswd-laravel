@@ -27,10 +27,10 @@ Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 
 // route landing page dan dashboard
 Route::get('/', [HomeController::class, 'index'])->middleware('guest');
-Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware('auth');
+Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware(['auth', 'must-admin-or-staff']);
 
 // resource controllers
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'must-admin'])->group(function () {
     Route::resources([
         'users' => UserController::class,
         'categories' => CategoryController::class,
@@ -38,6 +38,49 @@ Route::middleware('auth')->group(function () {
         'usergroups' => UserGroupController::class,
         'sliders' => SliderController::class,
     ]);
+
+    // sliders index & show
+    Route::get('/sliders', [SliderController::class, 'index'])
+        ->name('sliders.index')
+        ->withoutMiddleware('must-admin')
+        ->middleware('must-admin-or-staff');
+
+    Route::get('/sliders/{slider}', [SliderController::class, 'show'])
+        ->name('sliders.show')
+        ->withoutMiddleware('must-admin')
+        ->middleware('must-admin-or-staff');
+
+    // categories index
+    Route::get('/categories', [CategoryController::class, 'index'])
+        ->name('categories.index')
+        ->withoutMiddleware('must-admin')
+        ->middleware('must-admin-or-staff');
+
+    // products index & show
+    Route::get('/products', [ProductController::class, 'index'])
+        ->name('products.index')
+        ->withoutMiddleware('must-admin');
+
+    Route::get('/products/{product}', [ProductController::class, 'show'])
+        ->name('products.show')
+        ->withoutMiddleware('must-admin');
+
+    // usergroups index
+    Route::get('/usergroups', [UserGroupController::class, 'index'])
+        ->name('usergroups.index')
+        ->withoutMiddleware('must-admin')
+        ->middleware('must-admin-or-staff');
+
+    // users index & show
+    Route::get('/users', [UserController::class, 'index'])
+        ->name('users.index')
+        ->withoutMiddleware('must-admin')
+        ->middleware('must-admin-or-staff');
+
+    Route::get('/users/{user}', [UserController::class, 'show'])
+        ->name('users.show')
+        ->withoutMiddleware('must-admin')
+        ->middleware('must-admin-or-staff');
 });
 
 // redirect
