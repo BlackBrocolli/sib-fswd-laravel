@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\UserGroupController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,28 +20,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// route landing page
-Route::get('/', [HomeController::class, 'index']);
+// login & logout routes
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/login', [AuthController::class, 'authenticate'])->middleware('guest');
+Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 
-// route resource crud users
-Route::resource('/users', UserController::class);
+// route landing page dan dashboard
+Route::get('/', [HomeController::class, 'index'])->middleware('guest');
+Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware('auth');
 
-// route dashboard
-Route::get('/dashboard', [HomeController::class, 'dashboard']);
+// resource controllers
+Route::middleware('auth')->group(function () {
+    Route::resources([
+        'users' => UserController::class,
+        'categories' => CategoryController::class,
+        'products' => ProductController::class,
+        'usergroups' => UserGroupController::class,
+        'sliders' => SliderController::class,
+    ]);
+});
+
+// redirect
+Route::redirect('/home', '/dashboard')->middleware('auth');
 
 // ketika route tidak ditemukan
 Route::fallback(function () {
     return view('pages-error-404');
 });
-
-// route resource curd categories
-Route::resource('/categories', CategoryController::class);
-
-// route resource crud products
-Route::resource('/products', ProductController::class);
-
-// route resource crud user_groups
-Route::resource('/usergroups', UserGroupController::class);
-
-// route resource crud sliders
-Route::resource('/sliders', SliderController::class);

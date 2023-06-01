@@ -99,7 +99,7 @@
             </nav><!-- .navbar -->
 
             {{-- LOGIN BUTTON --}}
-            <a href="/dashboard" class="btn btn-sm text-white my-auto px-3" style="background-color: #f03c02">LOGIN</a>
+            <a href="/login" class="btn btn-sm text-white my-auto px-3" style="background-color: #f03c02">LOGIN</a>
 
         </div>
     </header><!-- End Header -->
