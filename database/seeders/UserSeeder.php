@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
                 'avatar' => 'images/avatar_man.jpg',
                 'phone' => '+6283333333333',
                 'address' => 'Jl. Raya 3',
-                'password' => '$$2y$10$eBF5pox4cCfPcQ4pssj9Seqj60Jo3sIfffQsWu.n0bmUANBlVWvFa', // userbiasa
+                'password' => '$2y$10$eBF5pox4cCfPcQ4pssj9Seqj60Jo3sIfffQsWu.n0bmUANBlVWvFa', // userbiasa
             ],
         ];
 
