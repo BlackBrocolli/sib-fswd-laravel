@@ -53,10 +53,12 @@
 
                             <div class="d-flex justify-content-center py-4">
                                 <span class="logo d-flex align-items-center w-auto">
-                                    <img src="assets/img/logo.png" alt="">
-                                    <span class="d-none d-lg-block">Arkatama Store</span>
+                                    <img src="{{ asset('assets-dashboard/img/bag-logo.png') }}"
+                                        style="max-width: 50px; max-height: 50px;">
+                                    <span class="d-none d-lg-block">Buy All Goods</span>
                                 </span>
-                            </div><!-- End Logo -->
+                            </div>
+                            <!-- End Logo -->
 
                             <div class="card mb-3">
 

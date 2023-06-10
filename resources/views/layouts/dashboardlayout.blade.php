@@ -47,8 +47,8 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="/dashboard" class="logo d-flex align-items-center">
-                <img src="{{ asset('assets-dashboard/img/logo.png') }}" alt="">
-                <span class="d-none d-lg-block">Arkatama Store</span>
+                <img src="{{ asset('assets-dashboard/img/bag-logo.png') }}" alt="">
+                <span class="d-none d-lg-block">Buy All Goods</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->

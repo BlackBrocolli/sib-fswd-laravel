@@ -1,6 +1,6 @@
 @extends('layouts.dashboardlayout')
 
-@section('title', 'Dashboard - Arkatama Store')
+@section('title', 'Dashboard - Buy All Goods')
 
 @section('content')
     <div class="pagetitle">

@@ -24,7 +24,7 @@ class SliderSeeder extends Seeder
 
         $data = [
             [
-                'title' => 'Welcome to Arkatama Store',
+                'title' => 'Welcome to Buy All Goods',
                 'description' => 'Your one-stop destination for all your shopping needs. Explore our website and discover the latest trends, exclusive deals, and exciting offers. Start your shopping journey with us today!',
                 'image' => 'slide-1.jpg',
                 'is_active' => 1,

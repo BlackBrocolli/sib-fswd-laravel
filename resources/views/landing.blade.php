@@ -60,10 +60,11 @@
     <header id="header" class="d-flex align-items-center">
         <div class="container d-flex justify-content-between">
 
-            <div class="logo">
-                <h1 class="text-light"><a href="index.html">Arkatama Store</a></h1>
+            <div class="logo d-flex align-items-center">
                 <!-- Uncomment below if you prefer to use an image logo -->
-                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+                <a href="/"><img src="{{ asset('assets-dashboard/img/bag-logo.png') }}" alt=""
+                        class="img-fluid"></a>
+                <h1 class="text-light ms-2"><a href="index.html">Buy All Goods</a></h1>
             </div>
 
             <nav id="navbar" class="navbar">
@@ -286,7 +287,7 @@
                     <h2>Our <strong>Clients</strong></h2>
                     <p>Explore our wide range of products and find everything you need in one place. With our reliable
                         delivery and excellent customer support, shopping with us is convenient and enjoyable. Join our
-                        community of satisfied customers and experience the best of online shopping at Arkatama Store.</p>
+                        community of satisfied customers and experience the best of online shopping.</p>
                 </div>
 
                 <div class="row no-gutters clients-wrap clearfix" data-aos="fade-up">
@@ -354,7 +355,7 @@
                 <div class="row">
 
                     <div class="col-lg-3 col-md-6 footer-contact">
-                        <h3>Arkatama Store</h3>
+                        <h3>Buy All Goods</h3>
                         <p>
                             A108 Adam Street <br>
                             New York, NY 535022<br>
