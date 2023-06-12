@@ -19,3 +19,9 @@ Terdapat 3 role untuk user, gunakan 3 email berikut untuk login:
     email: user@gmail.com 
     
     password: userbiasa
+
+- Role: Manager
+
+    email: manager@gmail.com 
+    
+    password: manager
