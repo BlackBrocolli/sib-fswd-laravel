@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\ViewProduct;
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 
@@ -81,9 +83,7 @@ class ProductController extends Controller
             'price' => $request->price,
             // status default waiting
             'status' => 'waiting',
-            // created_by kosong dulu
-            // karena belum ada user login
-            // 'created_by' => 1,
+            'created_by' => Auth::user()->id,
         ]);
 
         //redirect to index
@@ -165,9 +165,6 @@ class ProductController extends Controller
                 'price' => $request->price,
                 // status default waiting
                 'status' => 'waiting',
-                // created_by kosong dulu
-                // karena belum ada user login
-                // 'created_by' => 1,
             ]);
         } else {
             //update user without avatar
@@ -178,9 +175,6 @@ class ProductController extends Controller
                 'price' => $request->price,
                 // status default waiting
                 'status' => 'waiting',
-                // created_by sementara 1 dulu
-                // karena belum ada user login
-                // 'created_by' => 1,
             ]);
         }
 
@@ -204,5 +198,32 @@ class ProductController extends Controller
         $product->delete();
         //redirect to index
         return redirect()->route('products.index')->with(['success' => 'Data Produk Berhasil Dihapus!']);
+    }
+
+    public function accept($id)
+    {
+
+        $product = Product::findOrFail($id);
+        $product->update([
+            'status' => 'accepted',
+            'verified_by' => Auth::user()->id,
+            'verified_at' => Carbon::now(),
+        ]);
+
+        //redirect to index
+        return redirect()->route('products.index')->with(['success' => 'Product diterima!']);
+    }
+
+    public function reject($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->update([
+            'status' => 'rejected',
+            'verified_by' => Auth::user()->id,
+            'verified_at' => Carbon::now(),
+        ]);
+
+        //redirect to index
+        return redirect()->route('products.index')->with(['success' => 'Product ditolak!']);
     }
 }

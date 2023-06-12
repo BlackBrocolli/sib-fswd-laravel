@@ -143,12 +143,14 @@ class SliderController extends Controller
                 'image' => $imageName,
                 'title' => $request->title,
                 'description' => $request->description,
+                'is_active' => 0,
             ]);
         } else {
             //update slider without image
             $slider->update([
                 'title' => $request->title,
                 'description' => $request->description,
+                'is_active' => 0,
             ]);
         }
 
@@ -172,5 +174,24 @@ class SliderController extends Controller
         $slider->delete();
         //redirect to index
         return redirect()->route('sliders.index')->with(['success' => 'Data Slider Berhasil Dihapus!']);
+    }
+
+    public function activate($id)
+    {
+
+        $slider = Slider::findOrFail($id);
+        $slider->update(['is_active' => 1]);
+
+        //redirect to index
+        return redirect()->route('sliders.index')->with(['success' => 'Slider berhasil diaktifkan!']);
+    }
+
+    public function deactivate($id)
+    {
+        $slider = Slider::findOrFail($id);
+        $slider->update(['is_active' => 0]);
+
+        //redirect to index
+        return redirect()->route('sliders.index')->with(['success' => 'Slider berhasil dinonaktifkan!']);
     }
 }

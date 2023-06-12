@@ -17,10 +17,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        //get sliders and products
-        $sliders = Slider::latest()->get();
-        // $products = ViewProduct::take(9)->get();
-        $products = Product::take(9)->get();
+        // Get active sliders and accepted products
+        $sliders = Slider::where('is_active', 1)->latest()->get();
+        $products = Product::where('status', 'accepted')->take(9)->get();
         $categories = Category::orderBy('name')->get();
 
         return view('landing', compact('sliders', 'products', 'categories'));

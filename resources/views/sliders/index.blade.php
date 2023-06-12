@@ -24,14 +24,14 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Slider</h5>
-
-                        @if (Auth::user()->role == 1)
+                        @if (Auth::user()->role == 1 || Auth::user()->role == 2)
                             <div class="d-flex justify-content-between align-items-center my-2">
                                 <h5 class="card-title">Slider</h5>
                                 <a href="{{ route('sliders.create') }}" class="btn btn-primary btn-sm py-2 px-3"><i
                                         class="bi bi-person-plus-fill"></i> Tambah slider</a>
                             </div>
+                        @else
+                            <h5 class="card-title">Slider</h5>
                         @endif
 
                         @if (session('success'))
@@ -53,6 +53,7 @@
                                     <th scope="col" data-sortable="false">Image</th>
                                     <th scope="col">Title</th>
                                     <th scope="col">Description</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col" data-sortable="false">Action</th>
                                 </tr>
                             </thead>
@@ -67,8 +68,12 @@
                                             <img src="assets-landing/img/slide/{{ $slider->image }}" class="rounded"
                                                 style="width: 80px">
                                         </td>
-                                        <td>{{ Str::limit($slider->title, 30) }}</td>
-                                        <td>{{ Str::limit($slider->description, 20) }}</td> {{-- Menampilkan maksimal 50 karakter --}}
+                                        <td>{{ Str::limit($slider->title, 25) }}</td>
+                                        <td>{{ Str::limit($slider->description, 20) }}</td> {{-- Menampilkan maksimal 20 karakter --}}
+                                        <td><span
+                                                class="badge rounded-pill {{ $slider->is_active == '1' ? 'bg-success' : 'bg-danger' }}">{{ $slider->is_active == '1' ? 'Active' : 'Inactive' }}
+                                            </span>
+                                        </td>
                                         <td class="text-center">
                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                                 action="{{ route('sliders.destroy', $slider->id) }}" method="POST">
@@ -76,7 +81,7 @@
                                                     class="btn btn-sm btn-primary btn-block"><i class="bi bi-eye-fill"></i>
                                                     Detail</a>
 
-                                                @if (Auth::user()->role == 1)
+                                                @if (Auth::user()->role == 1 || Auth::user()->role == 2)
                                                     <a href="{{ route('sliders.edit', $slider->id) }}"
                                                         class="btn btn-sm btn-success btn-block"><i
                                                             class="bi bi-pencil-fill"></i> Edit</a>
@@ -86,6 +91,23 @@
                                                     <button type="submit" class="btn btn-sm btn-danger btn-block"><i
                                                             class="bi bi-trash-fill"></i> Hapus</button>
                                                 @endif
+
+                                                @if (Auth::user()->role == 4)
+                                                    @if ($slider->is_active == 0)
+                                                        <a href="{{ route('sliders.activate', $slider->id) }}"
+                                                            onclick="return confirmAction(event, 'Apakah Anda yakin ingin mengaktifkan slider ini?')"
+                                                            class="btn btn-sm btn-success btn-block">
+                                                            <i class="bi bi-check-circle-fill"></i> Activate
+                                                        </a>
+                                                    @else
+                                                        <a href="{{ route('sliders.deactivate', $slider->id) }}"
+                                                            onclick="return confirmAction(event, 'Apakah Anda yakin ingin menonaktifkan slider ini?')"
+                                                            class="btn btn-sm btn-danger btn-block">
+                                                            <i class="bi bi-x-circle-fill"></i> Deactivate
+                                                        </a>
+                                                    @endif
+                                                @endif
+
                                             </form>
                                         </td>
                                     </tr>
@@ -105,4 +127,14 @@
             </div>
         </div>
     </section>
+
+    <script>
+        function confirmAction(event, message) {
+            if (!confirm(message)) {
+                event.preventDefault();
+                return false;
+            }
+            return true;
+        }
+    </script>
 @endsection

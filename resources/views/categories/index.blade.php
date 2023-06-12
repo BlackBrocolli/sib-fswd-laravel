@@ -25,13 +25,14 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Kategori</h5>
-                        @if (Auth::user()->role == 1)
+                        @if (Auth::user()->role == 1 || Auth::user()->role == 2)
                             <div class="d-flex justify-content-between align-items-center my-2">
                                 <h5 class="card-title">Kategori</h5>
                                 <a href="{{ route('categories.create') }}" class="btn btn-primary btn-sm py-2 px-3"><i
                                         class="bi bi-person-plus-fill"></i> Tambah kategori</a>
                             </div>
+                        @else
+                            <h5 class="card-title">Kategori</h5>
                         @endif
 
                         @if (session('success'))
@@ -61,7 +62,7 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $category->name }}</td>
-                                        @if (Auth::user()->role == 1)
+                                        @if (Auth::user()->role == 1 || Auth::user()->role == 2)
                                             <td class="text-center">
                                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                                     action="{{ route('categories.destroy', $category->id) }}"

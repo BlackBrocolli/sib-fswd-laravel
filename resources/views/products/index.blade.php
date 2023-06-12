@@ -25,13 +25,14 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Produk</h5>
-                        @if (Auth::user()->role == 1)
+                        @if (Auth::user()->role == 1 || Auth::user()->role == 2)
                             <div class="d-flex justify-content-between align-items-center my-2">
                                 <h5 class="card-title">Produk</h5>
                                 <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm py-2 px-3"><i
                                         class="bi bi-person-plus-fill"></i> Tambah produk</a>
                             </div>
+                        @else
+                            <h5 class="card-title">Produk</h5>
                         @endif
 
                         @if (session('success'))
@@ -54,7 +55,7 @@
                                     <th scope="col">Nama Produk</th>
                                     <th scope="col">Kategori</th>
                                     <th scope="col">Harga</th>
-                                    @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+                                    @if (Auth::user()->role == 1 || Auth::user()->role == 2 || Auth::user()->role == 4)
                                         <th scope="col">Status</th>
                                     @endif
                                     <th scope="col" data-sortable="false">Action</th>
@@ -77,7 +78,7 @@
 
                                         <td>Rp{{ number_format($product->price, 2, ',', '.') }}</td>
 
-                                        @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+                                        @if (Auth::user()->role == 1 || Auth::user()->role == 2 || Auth::user()->role == 4)
                                             <td><span
                                                     class="badge rounded-pill {{ $product->status == 'waiting' ? 'bg-warning text-dark' : ($product->status == 'accepted' ? 'bg-success' : 'bg-danger') }}">{{ $product->status }}</span>
                                             </td>
@@ -89,7 +90,7 @@
                                                     class="btn btn-sm btn-primary btn-block"><i class="bi bi-eye-fill"></i>
                                                     Detail</a>
 
-                                                @if (Auth::user()->role == 1)
+                                                @if (Auth::user()->role == 1 || Auth::user()->role == 2)
                                                     <a href="{{ route('products.edit', $product->id) }}"
                                                         class="btn btn-sm btn-success btn-block"><i
                                                             class="bi bi-pencil-fill"></i> Edit</a>
@@ -99,6 +100,22 @@
                                                     <button type="submit" class="btn btn-sm btn-danger btn-block"><i
                                                             class="bi bi-trash-fill"></i> Hapus</button>
                                                 @endif
+
+                                                @if (Auth::user()->role == 4)
+                                                    @if ($product->status == 'waiting')
+                                                        <a href="{{ route('products.accept', $product->id) }}"
+                                                            onclick="return confirmAction(event, 'Apakah Anda yakin ingin menerima produk ini?')"
+                                                            class="btn btn-sm btn-success btn-block">
+                                                            <i class="bi bi-check-circle-fill"></i> Accept
+                                                        </a>
+                                                        <a href="{{ route('products.reject', $product->id) }}"
+                                                            onclick="return confirmAction(event, 'Apakah Anda yakin ingin menolak produk ini?')"
+                                                            class="btn btn-sm btn-danger btn-block">
+                                                            <i class="bi bi-x-circle-fill"></i> Reject
+                                                        </a>
+                                                    @endif
+                                                @endif
+
                                             </form>
                                         </td>
                                     </tr>
@@ -118,4 +135,14 @@
             </div>
         </div>
     </section>
+
+    <script>
+        function confirmAction(event, message) {
+            if (!confirm(message)) {
+                event.preventDefault();
+                return false;
+            }
+            return true;
+        }
+    </script>
 @endsection

@@ -91,7 +91,7 @@
                                         <input type="text" class="form-control @error('price') is-invalid @enderror"
                                             aria-label="Amount (to the nearest dollar)" name="price"
                                             value="{{ old('price', number_format($product->price, 0, ',', '')) }}"
-                                            id="price">
+                                            id="price" onkeyup="formatPrice(this)" onblur="removeFormat(this)">
                                         <span class="input-group-text">.00</span>
                                     </div>
                                     <!-- error message untuk price -->
@@ -132,5 +132,31 @@
     <script src="https://cdn.ckeditor.com/4.20.2/basic/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('description');
+    </script>
+    <script>
+        function formatPrice(input) {
+            // Mengambil nilai dari input harga
+            let price = input.value;
+
+            // Menghapus semua karakter selain angka
+            price = price.replace(/\D/g, '');
+
+            // Menambahkan tanda titik setiap 3 digit dari belakang
+            price = price.replace(/(\d)(?=(\d{3})+$)/g, '$1.');
+
+            // Mengatur nilai input dengan harga yang telah diformat
+            input.value = price;
+        }
+
+        function removeFormat(input) {
+            // Mengambil nilai dari input harga
+            let price = input.value;
+
+            // Menghapus semua karakter selain angka
+            price = price.replace(/\D/g, '');
+
+            // Mengatur nilai input tanpa tanda titik
+            input.value = price;
+        }
     </script>
 @endsection

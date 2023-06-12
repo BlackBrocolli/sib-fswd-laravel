@@ -50,6 +50,15 @@ class UserSeeder extends Seeder
                 'address' => 'Jl. Raya 3',
                 'password' => '$2y$10$eBF5pox4cCfPcQ4pssj9Seqj60Jo3sIfffQsWu.n0bmUANBlVWvFa', // userbiasa
             ],
+            [
+                'email' => 'manager@gmail.com',
+                'name' => 'Manager Toko',
+                'role' => 4,
+                'avatar' => 'images/avatar_man.jpg',
+                'phone' => '+6284444444444',
+                'address' => 'Jl. Raya 4',
+                'password' => '$2y$10$WvcpU6MNpQdwSyK3WZNPc.TAcBiXtTvmxy3bwyMyo5dXgxu0lXBoK', // userbiasa
+            ],
         ];
 
         foreach ($data as $value) {

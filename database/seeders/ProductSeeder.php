@@ -28,10 +28,10 @@ class ProductSeeder extends Seeder
                 'name' => 'Serum Brand',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 'price' => 40000,
-                'status' => 'waiting',
+                'status' => 'accepted',
                 'created_by' => 2,
-                'verified_by' => null,
-                'verified_at' => null,
+                'verified_by' => 4,
+                'verified_at' => Carbon::now(),
                 'image' => 'portfolio-1.jpg'
             ],
             [
@@ -39,9 +39,9 @@ class ProductSeeder extends Seeder
                 'name' => 'Natural Juice',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 'price' => 35000,
-                'status' => 'rejected',
+                'status' => 'accepted',
                 'created_by' => 2,
-                'verified_by' => 1,
+                'verified_by' => 4,
                 'verified_at' => Carbon::now(),
                 'image' => 'portfolio-2.jpg'
             ],
@@ -50,10 +50,10 @@ class ProductSeeder extends Seeder
                 'name' => 'Tube Mockup',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 'price' => 15000,
-                'status' => 'waiting',
+                'status' => 'accepted',
                 'created_by' => 2,
-                'verified_by' => null,
-                'verified_at' => null,
+                'verified_by' => 4,
+                'verified_at' => Carbon::now(),
                 'image' => 'portfolio-3.jpg'
             ],
             [
@@ -61,9 +61,9 @@ class ProductSeeder extends Seeder
                 'name' => 'Cosmetic Brand',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 'price' => 30000,
-                'status' => 'rejected',
+                'status' => 'accepted',
                 'created_by' => 2,
-                'verified_by' => 1,
+                'verified_by' => 4,
                 'verified_at' => Carbon::now(),
                 'image' => 'portfolio-4.jpg'
             ],
@@ -74,7 +74,7 @@ class ProductSeeder extends Seeder
                 'price' => 40000,
                 'status' => 'accepted',
                 'created_by' => 2,
-                'verified_by' => 1,
+                'verified_by' => 4,
                 'verified_at' => Carbon::now(),
                 'image' => 'portfolio-5.jpg'
             ],
@@ -85,7 +85,7 @@ class ProductSeeder extends Seeder
                 'price' => 45000,
                 'status' => 'accepted',
                 'created_by' => 2,
-                'verified_by' => 1,
+                'verified_by' => 4,
                 'verified_at' => Carbon::now(),
                 'image' => 'portfolio-6.jpg'
             ],
@@ -94,9 +94,9 @@ class ProductSeeder extends Seeder
                 'name' => 'Acqua Panna',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 'price' => 10000,
-                'status' => 'rejected',
+                'status' => 'accepted',
                 'created_by' => 2,
-                'verified_by' => 1,
+                'verified_by' => 4,
                 'verified_at' => Carbon::now(),
                 'image' => 'portfolio-7.jpg'
             ],
@@ -105,10 +105,10 @@ class ProductSeeder extends Seeder
                 'name' => 'Meja Kursi Belajar',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 'price' => 15000,
-                'status' => 'waiting',
+                'status' => 'accepted',
                 'created_by' => 2,
-                'verified_by' => null,
-                'verified_at' => null,
+                'verified_by' => 4,
+                'verified_at' => Carbon::now(),
                 'image' => 'portfolio-8.jpg'
             ],
             [
@@ -118,7 +118,7 @@ class ProductSeeder extends Seeder
                 'price' => 45000,
                 'status' => 'accepted',
                 'created_by' => 2,
-                'verified_by' => 1,
+                'verified_by' => 4,
                 'verified_at' => Carbon::now(),
                 'image' => 'portfolio-9.jpg'
             ],

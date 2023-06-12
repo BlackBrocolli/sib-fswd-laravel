@@ -49,7 +49,7 @@
                                 <td>Status</td>
                                 <td>:</td>
                                 <td><span
-                                        class="badge rounded-pill {{ $slider->is_active == '0' ? 'bg-danger text-dark' : 'bg-success' }}">{{ $slider->is_active == '1' ? 'Active' : 'Inactive' }}</span>
+                                        class="badge rounded-pill {{ $slider->is_active == '0' ? 'bg-danger' : 'bg-success' }}">{{ $slider->is_active == '1' ? 'Active' : 'Inactive' }}</span>
                                 </td>
                             </tr>
                         </table>

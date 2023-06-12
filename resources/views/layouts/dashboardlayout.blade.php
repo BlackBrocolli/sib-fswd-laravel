@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('assets-dashboard/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('assets-dashboard/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('assets-dashboard/img/bag-logo.png') }}" rel="icon">
+    <link href="{{ asset('assets-dashboard/img/bag-logo.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -289,23 +289,22 @@
 
         <ul class="sidebar-nav" id="sidebar-nav">
 
-            @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+            @if (Auth::user()->role == 1 || Auth::user()->role == 4)
                 <li class="nav-item">
                     <a class="nav-link {{ $navitem != 'dashboard' ? 'collapsed' : '' }}" href="/dashboard">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
                 </li><!-- End Dashboard Nav -->
-
-                <li class="nav-item">
-                    <a class="nav-link {{ $navitem != 'slider' ? 'collapsed' : '' }}"
-                        href="{{ route('sliders.index') }}">
-                        <i class="bi bi-card-image"></i>
-                        <span>Slider</span>
-                    </a>
-                </li>
-                <!-- End Slider Nav -->
             @endif
+
+            <li class="nav-item">
+                <a class="nav-link {{ $navitem != 'slider' ? 'collapsed' : '' }}" href="{{ route('sliders.index') }}">
+                    <i class="bi bi-card-image"></i>
+                    <span>Slider</span>
+                </a>
+            </li>
+            <!-- End Slider Nav -->
 
             <li class="nav-item">
                 <a class="nav-link {{ $navitem != 'produk' ? 'collapsed' : '' }}" data-bs-target="#components-nav"
@@ -315,7 +314,7 @@
                 <ul id="components-nav" class="nav-content collapse {{ $navitem == 'produk' ? 'show' : '' }}"
                     data-bs-parent="#sidebar-nav">
 
-                    @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+                    @if (Auth::user()->role == 1 || Auth::user()->role == 2 || Auth::user()->role == 4)
                         <li>
                             <a href="{{ route('categories.index') }}"
                                 class="{{ $navitemchild == 'kategori' ? 'active' : '' }}">
@@ -332,7 +331,7 @@
                 </ul>
             </li><!-- End Produk Nav -->
 
-            @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+            @if (Auth::user()->role == 1)
                 <li class="nav-item">
                     <a class="nav-link {{ $navitem != 'pengguna' ? 'collapsed' : '' }}" data-bs-target="#forms-nav"
                         data-bs-toggle="collapse" href="#">

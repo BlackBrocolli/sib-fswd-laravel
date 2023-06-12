@@ -65,5 +65,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'must-admin-or-staff' => \App\Http\Middleware\MustAdminOrStaff::class,
         'must-admin' => \App\Http\Middleware\MustAdmin::class,
+        'must-admin-staff-manager' => \App\Http\Middleware\MustAdminStaffManager::class,
+        'must-admin-or-manager' => \App\Http\Middleware\MustAdminOrManager::class,
+        'must-manager' => \App\Http\Middleware\MustManager::class,
     ];
 }

@@ -4,8 +4,8 @@
 
 @section('link')
     <!-- Favicons -->
-    <link href="{{ asset('assets-landing/img/favicon-bag.png') }}" rel="icon">
-    <link href="{{ asset('assets-landing/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('assets-dashboard/img/bag-logo.png') }}" rel="icon">
+    <link href="{{ asset('assets-dashboard/img/bag-logo.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link

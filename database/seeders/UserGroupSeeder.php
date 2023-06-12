@@ -26,6 +26,7 @@ class UserGroupSeeder extends Seeder
             ['nama_grup' => 'Admin'],
             ['nama_grup' => 'Staff'],
             ['nama_grup' => 'User'],
+            ['nama_grup' => 'Manager'],
         ];
 
         foreach ($data as $value) {
