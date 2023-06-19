@@ -74,7 +74,7 @@
                     <li><a href="services.html">Services</a></li>
                     {{-- <li><a href="testimonials.html">Testimonials</a></li> --}}
                     {{-- <li><a href="pricing.html">Pricing</a></li> --}}
-                    <li><a href="portfolio.html">Katalog</a></li>
+                    <li><a href="/shop">Shop</a></li>
                     {{-- <li><a href="blog.html">Blog</a></li> --}}
                     {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>

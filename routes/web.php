@@ -27,7 +27,10 @@ Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 
 // route landing page dan dashboard
 Route::get('/', [HomeController::class, 'index'])->middleware('guest');
+Route::get('/shop', [HomeController::class, 'shop'])->name('shop')->middleware('auth');
+Route::post('/shop/search', [HomeController::class, 'search'])->name('shop.search')->middleware('auth');
 Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware(['auth', 'must-admin-or-manager']);
+Route::get('/faq', [HomeController::class, 'faq'])->middleware(['auth', 'must-admin-staff-manager']);
 
 // resource controllers
 Route::middleware(['auth', 'must-admin-or-staff'])->group(function () {

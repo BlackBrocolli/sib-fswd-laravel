@@ -245,16 +245,16 @@
                                 <span>My Profile</span>
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <hr class="dropdown-divider">
-                        </li>
+                        </li> --}}
 
-                        <li>
+                        {{-- <li>
                             <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                                 <i class="bi bi-gear"></i>
                                 <span>Account Settings</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -355,22 +355,29 @@
                 </li><!-- End Pengguna Nav -->
             @endif
 
-            {{-- <li class="nav-heading">Pages</li>
+            <li class="nav-heading">Others</li>
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link collapsed" href="users-profile.html">
                     <i class="bi bi-person"></i>
                     <span>Profile</span>
                 </a>
-            </li><!-- End Profile Page Nav -->
+            </li><!-- End Profile Page Nav --> --}}
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-faq.html">
+                <a class="nav-link {{ $navitem != 'shop' ? 'collapsed' : '' }}" href="{{ route('shop') }}">
+                    <i class="bi bi-shop"></i>
+                    <span>Shop</span>
+                </a>
+            </li>
+            <!-- End Shop Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link {{ $navitem != 'faq' ? 'collapsed' : '' }}" href="/faq">
                     <i class="bi bi-question-circle"></i>
                     <span>F.A.Q</span>
                 </a>
-            </li><!-- End F.A.Q Page Nav --> --}}
-            <!-- End Blank Page Nav -->
+            </li><!-- End F.A.Q Page Nav -->
 
         </ul>
 

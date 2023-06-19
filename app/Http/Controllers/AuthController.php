@@ -25,7 +25,7 @@ class AuthController extends Controller
 
             // jika yang login adalah user dengan role User (id = 3)
             if (Auth::user()->role == 3) {
-                return redirect()->intended('/products');
+                return redirect()->intended('/shop');
             } elseif (Auth::user()->role == 2) {
                 return redirect()->intended('/sliders');
             }

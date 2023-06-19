@@ -66,7 +66,7 @@
                                 <td style="vertical-align: top;">:</td>
                                 <td style="vertical-align: top;">{!! $product->description !!}</td>
                             </tr>
-                            @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+                            @if (Auth::user()->role == 1 || Auth::user()->role == 2 || Auth::user()->role == 4)
                                 <tr>
                                     <td>Status</td>
                                     <td>:</td>
