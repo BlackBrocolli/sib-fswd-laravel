@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'name' => 'Admin',
                 'role' => 1,
-                'avatar' => null,
+                'avatar' => 'default-avatar3.jpg',
                 'phone' => '+6281111111111',
                 'address' => 'Jl. Raya 1',
                 'password' => '$2y$10$0bEeTvhh9toh1Kdwz7Fz5eL7VYwMEjJQrzZDSBEsWgjtl9CTanOge', // admin
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
                 'email' => 'staff@gmail.com',
                 'name' => 'Staff',
                 'role' => 2,
-                'avatar' => 'images/avatar_man.jpg',
+                'avatar' => 'staff_avatar.jpg',
                 'phone' => '+6282222222222',
                 'address' => 'Jl. Raya 2',
                 'password' => '$2y$10$9XrG3diapfjivRYKtipLXupDdbTWnILkVTGFp33u9AFTluTr0Kwju', // staff
@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
                 'email' => 'user@gmail.com',
                 'name' => 'User biasa',
                 'role' => 3,
-                'avatar' => 'images/avatar_man.jpg',
+                'avatar' => 'user_avatar.jpg',
                 'phone' => '+6283333333333',
                 'address' => 'Jl. Raya 3',
                 'password' => '$2y$10$eBF5pox4cCfPcQ4pssj9Seqj60Jo3sIfffQsWu.n0bmUANBlVWvFa', // userbiasa
@@ -54,7 +54,7 @@ class UserSeeder extends Seeder
                 'email' => 'manager@gmail.com',
                 'name' => 'Manager Toko',
                 'role' => 4,
-                'avatar' => 'images/avatar_man.jpg',
+                'avatar' => 'manager_avatar.jpg',
                 'phone' => '+6284444444444',
                 'address' => 'Jl. Raya 4',
                 'password' => '$2y$10$WvcpU6MNpQdwSyK3WZNPc.TAcBiXtTvmxy3bwyMyo5dXgxu0lXBoK', // userbiasa

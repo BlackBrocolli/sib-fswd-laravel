@@ -31,6 +31,9 @@ Route::get('/shop', [HomeController::class, 'shop'])->name('shop')->middleware('
 Route::post('/shop/search', [HomeController::class, 'search'])->name('shop.search')->middleware('auth');
 Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware(['auth', 'must-admin-or-manager']);
 Route::get('/faq', [HomeController::class, 'faq'])->middleware(['auth', 'must-admin-staff-manager']);
+Route::get('/profile', [HomeController::class, 'profile'])->name('profile')->middleware(['auth', 'must-admin-staff-manager']);
+Route::put('/profile/{id}', [HomeController::class, 'profile_update'])->name('update_profile')->middleware(['auth', 'must-admin-staff-manager']);
+Route::put('/password/{id}', [HomeController::class, 'change_password'])->name('change_password')->middleware(['auth', 'must-admin-staff-manager']);
 
 // resource controllers
 Route::middleware(['auth', 'must-admin-or-staff'])->group(function () {

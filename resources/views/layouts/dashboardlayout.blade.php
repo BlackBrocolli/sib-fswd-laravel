@@ -220,13 +220,10 @@
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                         data-bs-toggle="dropdown">
-                        @if (!Auth::user()->avatar)
-                            <img src="{{ asset('assets-dashboard/img/default-avatar3.jpg') }}" alt="Profile"
-                                class="rounded-circle">
-                        @else
-                            <img src="{{ asset('storage/' . Auth::user()->avatar) }}" class="rounded-circle"
-                                alt="Profile">
-                        @endif
+
+                        <img src="{{ asset('assets-dashboard/img/avatar/' . auth()->user()->avatar) }}"
+                            class="rounded-circle" alt="Profile">
+
                         <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
                     </a><!-- End Profile Iamge Icon -->
 
@@ -240,7 +237,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('profile') }}">
                                 <i class="bi bi-person"></i>
                                 <span>My Profile</span>
                             </a>
@@ -309,7 +306,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ $navitem != 'produk' ? 'collapsed' : '' }}" data-bs-target="#components-nav"
                     data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-grid-3x3-gap"></i><span>Produk</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-grid-3x3-gap"></i><span>Product</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="components-nav" class="nav-content collapse {{ $navitem == 'produk' ? 'show' : '' }}"
                     data-bs-parent="#sidebar-nav">
@@ -318,14 +315,14 @@
                         <li>
                             <a href="{{ route('categories.index') }}"
                                 class="{{ $navitemchild == 'kategori' ? 'active' : '' }}">
-                                <i class="bi bi-circle"></i><span>Kategori</span>
+                                <i class="bi bi-circle"></i><span>Categories</span>
                             </a>
                         </li>
                     @endif
                     <li>
                         <a href="{{ route('products.index') }}"
                             class="{{ $navitemchild == 'daftar-produk' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Daftar Produk</span>
+                            <i class="bi bi-circle"></i><span>Product List</span>
                         </a>
                     </li>
                 </ul>
@@ -335,20 +332,20 @@
                 <li class="nav-item">
                     <a class="nav-link {{ $navitem != 'pengguna' ? 'collapsed' : '' }}" data-bs-target="#forms-nav"
                         data-bs-toggle="collapse" href="#">
-                        <i class="bi bi-people"></i><span>Pengguna</span><i class="bi bi-chevron-down ms-auto"></i>
+                        <i class="bi bi-people"></i><span>User</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <ul id="forms-nav" class="nav-content collapse {{ $navitem == 'pengguna' ? 'show' : '' }}"
                         data-bs-parent="#sidebar-nav">
                         <li>
                             <a href="{{ route('usergroups.index') }}"
                                 class="{{ $navitemchild == 'grup-pengguna' ? 'active' : '' }}">
-                                <i class="bi bi-circle"></i><span>Grup Pengguna</span>
+                                <i class="bi bi-circle"></i><span>Role</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('users.index') }}"
                                 class="{{ $navitemchild == 'daftar-pengguna' ? 'active' : '' }}">
-                                <i class="bi bi-circle"></i><span>Daftar Pengguna</span>
+                                <i class="bi bi-circle"></i><span>User List</span>
                             </a>
                         </li>
                     </ul>
@@ -363,6 +360,13 @@
                     <span>Profile</span>
                 </a>
             </li><!-- End Profile Page Nav --> --}}
+
+            <li class="nav-item">
+                <a class="nav-link {{ $navitem != 'profile' ? 'collapsed' : '' }}" href="{{ route('profile') }}">
+                    <i class="bi bi-person"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link {{ $navitem != 'shop' ? 'collapsed' : '' }}" href="{{ route('shop') }}">

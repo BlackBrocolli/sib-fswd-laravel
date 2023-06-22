@@ -7,6 +7,8 @@ use App\Models\User_group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -63,13 +65,21 @@ class UserController extends Controller
 
         if ($request->hasFile('avatar')) {
             //upload avatar
+            /* $image = $request->file('avatar');
+            $avatarName = $image->hashName();
+            $image->storeAs('public/images', $avatarName); */
+
+            //upload avatar
             $image = $request->file('avatar');
             $avatarName = $image->hashName();
-            $image->storeAs('public/images', $avatarName);
+
+            $imagePath = 'assets-dashboard/img/avatar/' . $avatarName;
+            Image::make($image)
+                ->save(public_path($imagePath));
 
             //create user with avatar
             User::create([
-                'avatar' => "images/$avatarName",
+                'avatar' => $avatarName,
                 'name' => $request->name,
                 'role' => $request->role,
                 'password' => Hash::make($request->password),
@@ -78,8 +88,9 @@ class UserController extends Controller
                 'address' => $request->address,
             ]);
         } else {
-            // create user without avatar
+            // create user with default avatar
             User::create([
+                'avatar' => 'default-avatar3.jpg',
                 'name' => $request->name,
                 'role' => $request->role,
                 'password' => Hash::make($request->password),
@@ -155,17 +166,24 @@ class UserController extends Controller
 
         //check if avatar is uploaded
         if ($request->hasFile('avatar')) {
+
             //upload new avatar
             $image = $request->file('avatar');
             $avatarName = $image->hashName();
-            $image->storeAs('public/images', $avatarName);
 
-            //delete old image
-            Storage::delete('public/' . $user->avatar);
+            $imagePath = 'assets-dashboard/img/avatar/' . $avatarName;
+            Image::make($image)
+                ->save(public_path($imagePath));
+
+            if ($user->avatar != 'default-avatar3.jpg') {
+                //delete old avatar
+                $oldImagePath = public_path('assets-dashboard/img/avatar/' . $user->avatar);
+                File::delete($oldImagePath);
+            }
 
             //update user with new avatar
             $user->update([
-                'avatar' => "images/$avatarName",
+                'avatar' => $avatarName,
                 'name' => $request->name,
                 'role' => $request->role,
                 'password' => Hash::make($request->password),
@@ -197,8 +215,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //delete image
-        Storage::delete('public/' . $user->avatar);
+        //delete old image
+        $oldImagePath = public_path('assets-dashboard/img/avatar/' . $user->avatar);
+        File::delete($oldImagePath);
         //delete post
         $user->delete();
         //redirect to index

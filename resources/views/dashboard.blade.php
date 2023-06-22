@@ -20,11 +20,11 @@
             <div class="col-lg-8">
                 <div class="row">
 
-                    <!-- Sales Card -->
+                    <!-- Sliders Card -->
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card sales-card">
 
-                            <div class="filter">
+                            {{-- <div class="filter">
                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                         class="bi bi-three-dots"></i></a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -36,32 +36,32 @@
                                     <li><a class="dropdown-item" href="#">This Month</a></li>
                                     <li><a class="dropdown-item" href="#">This Year</a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
 
                             <div class="card-body">
-                                <h5 class="card-title">Sales <span>| Today</span></h5>
+                                <h5 class="card-title">Sliders</h5>
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-cart"></i>
+                                        <i class="bi bi-sliders"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>145</h6>
-                                        <span class="text-success small pt-1 fw-bold">12%</span> <span
-                                            class="text-muted small pt-2 ps-1">increase</span>
-
+                                        <h6>{{ $totalSlidersCount }}</h6>
+                                        <span class="text-success small pt-1 fw-bold">{{ $activeSlidersCount }}</span>
+                                        <span class="text-muted small pt-2 ps-1">active sliders</span>
                                     </div>
                                 </div>
                             </div>
 
-                        </div>
-                    </div><!-- End Sales Card -->
 
-                    <!-- Revenue Card -->
+                        </div>
+                    </div><!-- End Sliders Card -->
+
+                    <!-- Products Card -->
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card revenue-card">
 
-                            <div class="filter">
+                            {{-- <div class="filter">
                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                         class="bi bi-three-dots"></i></a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -73,26 +73,25 @@
                                     <li><a class="dropdown-item" href="#">This Month</a></li>
                                     <li><a class="dropdown-item" href="#">This Year</a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
 
                             <div class="card-body">
-                                <h5 class="card-title">Revenue <span>| This Month</span></h5>
+                                <h5 class="card-title">Products</h5>
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-currency-dollar"></i>
+                                        <i class="bi bi-box"></i> <!-- Atau gunakan <i class="bi bi-cube"></i> -->
                                     </div>
                                     <div class="ps-3">
-                                        <h6>$3,264</h6>
-                                        <span class="text-success small pt-1 fw-bold">8%</span> <span
-                                            class="text-muted small pt-2 ps-1">increase</span>
-
+                                        <h6>{{ $totalProductsCount }}</h6>
+                                        <span class="text-success small pt-1 fw-bold">{{ $acceptedProductsCount }}</span>
+                                        <span class="text-muted small pt-2 ps-1">accepted products</span>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
-                    </div><!-- End Revenue Card -->
+                    </div><!-- End Products Card -->
 
                     <!-- Customers Card -->
                     <div class="col-xxl-4 col-xl-12">
@@ -134,7 +133,7 @@
                     </div><!-- End Customers Card -->
 
                     <!-- Reports -->
-                    <div class="col-12">
+                    {{-- <div class="col-12">
                         <div class="card">
 
                             <div class="filter">
@@ -218,13 +217,14 @@
                             </div>
 
                         </div>
-                    </div><!-- End Reports -->
+                    </div> --}}
+                    <!-- End Reports -->
 
-                    <!-- Recent Sales -->
+                    <!-- Products waiting -->
                     <div class="col-12">
                         <div class="card recent-sales overflow-auto">
 
-                            <div class="filter">
+                            {{-- <div class="filter">
                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                         class="bi bi-three-dots"></i></a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -236,69 +236,41 @@
                                     <li><a class="dropdown-item" href="#">This Month</a></li>
                                     <li><a class="dropdown-item" href="#">This Year</a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
 
                             <div class="card-body">
-                                <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+                                <h5 class="card-title">Products <span>| Waiting for Acceptance</span></h5>
 
                                 <table class="table table-borderless datatable">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Customer</th>
-                                            <th scope="col">Product</th>
+                                            <th scope="col" data-sortable="false">Image</th>
+                                            <th scope="col">Name</th>
                                             <th scope="col">Price</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col" data-sortable="false">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2457</a></th>
-                                            <td>Brandon Jacob</td>
-                                            <td><a href="#" class="text-primary">At praesentium minu</a>
-                                            </td>
-                                            <td>$64</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2147</a></th>
-                                            <td>Bridie Kessler</td>
-                                            <td><a href="#" class="text-primary">Blanditiis dolor omnis
-                                                    similique</a></td>
-                                            <td>$47</td>
-                                            <td><span class="badge bg-warning">Pending</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2049</a></th>
-                                            <td>Ashleigh Langosh</td>
-                                            <td><a href="#" class="text-primary">At recusandae
-                                                    consectetur</a></td>
-                                            <td>$147</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2644</a></th>
-                                            <td>Angus Grady</td>
-                                            <td><a href="#" class="text-primar">Ut voluptatem id earum
-                                                    et</a></td>
-                                            <td>$67</td>
-                                            <td><span class="badge bg-danger">Rejected</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2644</a></th>
-                                            <td>Raheem Lehner</td>
-                                            <td><a href="#" class="text-primary">Sunt similique
-                                                    distinctio</a></td>
-                                            <td>$165</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
-                                        </tr>
+                                        @foreach ($waitingProducts as $product)
+                                            <tr>
+                                                <th scope="row">{{ $loop->iteration }}</th>
+                                                <td><img src="assets-landing/img/portfolio/{{ $product->image }}"
+                                                        class="rounded" style="width: 80px"></td>
+                                                <td><a href="{{ route('products.show', $product->id) }}"
+                                                        class="text-primary">{{ $product->name }}</a>
+                                                </td>
+                                                <td>Rp{{ number_format($product->price, 2, ',', '.') }}</td>
+                                                <td><span class="badge bg-warning">{{ $product->status }}</span></td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
 
                             </div>
 
                         </div>
-                    </div><!-- End Recent Sales -->
+                    </div><!-- End Products waiting  -->
 
                     <!-- Top Selling -->
                     <div class="col-12">
@@ -472,7 +444,7 @@
                 </div><!-- End Recent Activity -->
 
                 <!-- Budget Report -->
-                <div class="card">
+                {{-- <div class="card">
                     <div class="filter">
                         <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -543,7 +515,8 @@
                         </script>
 
                     </div>
-                </div><!-- End Budget Report -->
+                </div> --}}
+                <!-- End Budget Report -->
 
                 <!-- Website Traffic -->
                 <div class="card">

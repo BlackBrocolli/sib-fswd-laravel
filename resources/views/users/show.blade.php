@@ -30,9 +30,10 @@
                         <div class="text-center">
                             @if (!$user->avatar)
                                 <img src="{{ asset('assets-dashboard/img/default-avatar3.jpg') }}" alt="Profile"
-                                    class="rounded" style="width: 200px">
+                                    class="rounded" style="width: 80px">
                             @else
-                                <img src="{{ asset('storage/' . $user->avatar) }}" class="rounded" style="width: 200px">
+                                <img src="{{ asset('assets-dashboard/img/avatar/' . $user->avatar) }}" class="rounded"
+                                    style="width: 200px">
                             @endif
 
                         </div>

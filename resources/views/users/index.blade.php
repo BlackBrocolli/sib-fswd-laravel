@@ -25,14 +25,12 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Pengguna</h5>
-                        @if (Auth::user()->role == 1)
-                            <div class="d-flex justify-content-between align-items-center my-2">
-                                <h5 class="card-title">Pengguna</h5>
-                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm py-2 px-3"><i
-                                        class="bi bi-person-plus-fill"></i> Tambah pengguna</a>
-                            </div>
-                        @endif
+
+                        <div class="d-flex justify-content-between align-items-center my-2">
+                            <h5 class="card-title">Pengguna</h5>
+                            <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm py-2 px-3"><i
+                                    class="bi bi-person-plus-fill"></i> Tambah pengguna</a>
+                        </div>
 
                         @if (session('success'))
                             <div class="alert alert-success">
@@ -65,8 +63,8 @@
                                                 <img src="{{ asset('assets-dashboard/img/default-avatar3.jpg') }}"
                                                     alt="Profile" class="rounded" style="width: 80px">
                                             @else
-                                                <img src="{{ asset('storage/' . $user->avatar) }}" class="rounded"
-                                                    style="width: 80px">
+                                                <img src="{{ asset('assets-dashboard/img/avatar/' . $user->avatar) }}"
+                                                    class="rounded" style="width: 80px">
                                             @endif
                                         </td>
                                         <td>{{ $user->name }}</td>
