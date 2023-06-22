@@ -51,7 +51,7 @@
                                 <td>:</td>
                                 <td>{{ $user->email }}</td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <td>Password</td>
                                 <td>:</td>
                                 <td>
@@ -60,7 +60,7 @@
                                     <button type="button" id="toggle-password-button"
                                         onclick="togglePasswordVisibility()">Tampilkan</button>
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <td>Role</td>
                                 <td>:</td>
@@ -91,20 +91,20 @@
     </section>
 
     <script>
-        function togglePasswordVisibility() {
-            var passwordDisplay = document.getElementById("password-display");
-            var passwordInput = document.getElementById("password-input");
-            var toggleButton = document.getElementById("toggle-password-button");
+        /* function togglePasswordVisibility() {
+                var passwordDisplay = document.getElementById("password-display");
+                var passwordInput = document.getElementById("password-input");
+                var toggleButton = document.getElementById("toggle-password-button");
 
-            if (passwordDisplay.style.display === "none") {
-                passwordDisplay.style.display = "inline";
-                passwordInput.style.display = "none";
-                toggleButton.textContent = "Sembunyikan";
-            } else {
-                passwordDisplay.style.display = "none";
-                passwordInput.style.display = "inline";
-                toggleButton.textContent = "Tampilkan";
-            }
-        }
+                if (passwordDisplay.style.display === "none") {
+                    passwordDisplay.style.display = "inline";
+                    passwordInput.style.display = "none";
+                    toggleButton.textContent = "Sembunyikan";
+                } else {
+                    passwordDisplay.style.display = "none";
+                    passwordInput.style.display = "inline";
+                    toggleButton.textContent = "Tampilkan";
+                }
+            } */
     </script>
 @endsection

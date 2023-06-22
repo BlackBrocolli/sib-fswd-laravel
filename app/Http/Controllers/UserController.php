@@ -152,7 +152,6 @@ class UserController extends Controller
             'email' => 'required|email|max:100',
             'phone' => 'required|string|max:15',
             'address' => 'required|string|max:255',
-            'password' => 'required|string|max:100',
             'role' => 'required',
         ]);
 
@@ -164,44 +163,37 @@ class UserController extends Controller
             ]);
         }
 
-        //check if avatar is uploaded
+        // Check if avatar is uploaded
         if ($request->hasFile('avatar')) {
-
-            //upload new avatar
+            // Upload new avatar
             $image = $request->file('avatar');
             $avatarName = $image->hashName();
-
             $imagePath = 'assets-dashboard/img/avatar/' . $avatarName;
-            Image::make($image)
-                ->save(public_path($imagePath));
+            Image::make($image)->save(public_path($imagePath));
 
             if ($user->avatar != 'default-avatar3.jpg') {
-                //delete old avatar
+                // Delete old avatar
                 $oldImagePath = public_path('assets-dashboard/img/avatar/' . $user->avatar);
                 File::delete($oldImagePath);
             }
 
-            //update user with new avatar
-            $user->update([
-                'avatar' => $avatarName,
-                'name' => $request->name,
-                'role' => $request->role,
-                'password' => Hash::make($request->password),
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'address' => $request->address,
-            ]);
-        } else {
-            //update user without avatar
-            $user->update([
-                'name' => $request->name,
-                'role' => $request->role,
-                'password' => Hash::make($request->password),
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'address' => $request->address,
-            ]);
+            // Update user with new avatar
+            $user->avatar = $avatarName;
         }
+
+        // Update user details
+        $user->name = $request->name;
+        $user->role = $request->role;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+
+        // Check if password is not null
+        if ($request->password !== null) {
+            $user->password = bcrypt($request->password);
+        }
+
+        $user->save();
 
         //redirect to index
         return redirect()->route('users.index')->with(['success' => 'Data Berhasil Diubah!']);

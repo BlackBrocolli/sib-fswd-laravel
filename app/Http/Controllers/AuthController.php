@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -55,5 +57,35 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function register()
+    {
+        return view('register');
+    }
+
+    public function processRegister(Request $request)
+    {
+        //validate form
+        $this->validate($request, [
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|max:100|unique:users,email',
+            'phone' => 'required|string|max:15',
+            'address' => 'required|string|max:255',
+            'password' => 'required|string|max:100',
+        ]);
+
+        User::create([
+            'avatar' => 'default-avatar3.jpg',
+            'name' => $request->name,
+            'role' => 3,
+            'password' => Hash::make($request->password),
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+        ]);
+
+        //redirect to index
+        return redirect()->route('register')->with(['success' => 'Registrasi berhasil!']);
     }
 }

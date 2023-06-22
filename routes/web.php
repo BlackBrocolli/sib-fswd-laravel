@@ -25,6 +25,9 @@ Route::get('/login', [AuthController::class, 'login'])->name('login')->middlewar
 Route::post('/login', [AuthController::class, 'authenticate'])->middleware('guest');
 Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 
+Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
+Route::post('/register', [AuthController::class, 'processRegister'])->middleware('guest');
+
 // route landing page dan dashboard
 Route::get('/', [HomeController::class, 'index'])->middleware('guest');
 Route::get('/shop', [HomeController::class, 'shop'])->name('shop')->middleware('auth');

@@ -78,14 +78,7 @@
                                 <div class="col-sm-10">
                                     <div class="input-group">
                                         <input id="password-input" type="password"
-                                            class="form-control @error('password') is-invalid @enderror" name="password"
-                                            value="{{ old('password', $user->password) }}">
-                                        <div class="input-group-append">
-                                            <button id="password-visibility-button" type="button" class="btn btn-secondary"
-                                                onclick="togglePasswordVisibility()">
-                                                <i class="bi bi-eye"></i>
-                                            </button>
-                                        </div>
+                                            class="form-control @error('password') is-invalid @enderror" name="password">
                                     </div>
                                     <!-- error message untuk password -->
                                     @error('password')
